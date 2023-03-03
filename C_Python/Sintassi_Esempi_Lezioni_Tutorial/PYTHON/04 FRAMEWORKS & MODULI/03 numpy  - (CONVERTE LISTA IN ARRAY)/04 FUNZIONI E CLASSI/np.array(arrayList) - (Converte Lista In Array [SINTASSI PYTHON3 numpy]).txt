@@ -1,0 +1,11 @@
+
+[SINTASSI GENERICA]
+
+#python3 -m pip install numpy
+import numpy as np
+
+listOfLists = [[77, 88, 99], [31, 42, 63], [11, 22, 33]]
+npArray = np.array([ elem for singleList in listOfLists for elem in singleList])
+print('Contents of the npArray : ')
+print(npArray)
+
