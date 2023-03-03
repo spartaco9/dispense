@@ -1,0 +1,7 @@
+
+#Controlla se il file aperto è effettivamente crittato
+
+file = PdfFileReader("encrypt.pdf")
+password = ""
+if file.isEncrypted:
+    file.decrypt(password)

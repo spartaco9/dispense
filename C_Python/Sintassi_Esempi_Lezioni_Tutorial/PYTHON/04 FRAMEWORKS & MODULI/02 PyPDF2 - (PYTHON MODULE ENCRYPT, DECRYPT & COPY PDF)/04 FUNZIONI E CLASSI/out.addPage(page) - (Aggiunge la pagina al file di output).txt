@@ -1,0 +1,7 @@
+
+#Aggiunge la pagina al file di output
+
+file = PdfFileReader("file.pdf")
+out = PdfFileWriter()
+page = file.getPage(idx)
+out.addPage(page)

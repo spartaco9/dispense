@@ -1,0 +1,6 @@
+
+#Ottiene la pagina in index idx
+
+file = PdfFileReader("file.pdf")
+for idx in range(num):
+   file.getPage(idx)

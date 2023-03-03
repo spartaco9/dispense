@@ -1,0 +1,5 @@
+
+#Ottiene il numero di pagine nel file originale
+
+file = PdfFileReader("acca1.pdf")
+file.numPages

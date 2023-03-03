@@ -1,0 +1,29 @@
+
+[SINTASSI GENERICA]
+
+mergePdf(inputPath, outPdf)
+
+ ----------------------------------------------------------------------------
+
+[ESEMPIO PRATICO]
+
+
+from PyPDF2 import PdfFileReader, PdfFileWriter
+import glob
+
+def mergePdf(pathInput, pathOutput):
+    pdfWriter = PdfFileWriter()
+
+    for path in pathInput:
+        pdfReader = PdfFileReader(path)
+        for page in range(pdfReader.getNumPages()):
+            pdfWriter.addPage(pdfReader.getPage(page))
+
+    with open(pathOutput, 'wb') as f:
+        pdfWriter.write(f)
+
+inputPath = glob.glob('*.pdf')
+inputPath.sort()
+filePdf = 'merge.pdf'
+mergePdf(inputPath, filePdf)
+

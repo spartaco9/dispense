@@ -1,0 +1,2 @@
+#Apre il file PDF crittato con PdfFileReader
+PdfFileReader("file.pdf")

@@ -1,0 +1,8 @@
+
+#Scrive il PDF crittato su questo file
+
+file = PdfFileReader("file.pdf")
+out = PdfFileWriter()
+page = file.getPage(idx)
+with open("encrypt.pdf", "wb") as f:
+out.write(f)

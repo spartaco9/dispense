@@ -1,0 +1,145 @@
+
+https://www.geeksforgeeks.org/encrypt-and-decrypt-pdf-using-pypdf2/
+
+ -----------------------------------------------------------------------------
+
+
+
+
+
+                      Critta e decritta PDF utilizzando PyPDF2
+
+
+
+
+
+PDF (Portable Document Format) è uno dei formati di file più utilizzati per l'archiviazione e l'invio di documenti. Sono comunemente usati per molti scopi come eBook, curriculum, documenti scansionati, ecc. Ma poiché condividiamo PDF con molte persone, c'è la possibilità che i suoi dati vengano trapelati o rubati. Quindi, è necessario proteggere con password i nostri file PDF in modo che solo le persone autorizzate possano accedervi.
+
+In questo articolo, vedremo come impostare una password per proteggere un file PDF. Utilizzeremo il modulo PyPDF2 per crittografare e decrittografare i nostri file PDF. PyPDF2 è una libreria Python costruita come un toolkit PDF. È in grado di:
+
+Estrazione delle informazioni sul documento (titolo, autore, ...)
+Divisione e unione di documenti
+Ritaglio di pagine
+Crittografia e decrittografia di file PDF
+Installazione
+PyPDF2 non è una libreria incorporata, quindi dobbiamo installarla.
+
+pip3 installa PyPDF2
+Ora siamo pronti per scrivere il nostro script per crittografare i file PDF.
+
+Crittografia del file PDF
+Innanzitutto, apriremo il nostro file PDF con l'oggetto lettore. Quindi, creeremo una copia del file originale in modo che se qualcosa va storto, non influirà sul nostro file originale. Per creare una copia, dobbiamo scorrere ogni pagina del file e aggiungerla al nostro nuovo file PDF. Quindi, possiamo semplicemente crittografare il nostro nuovo file PDF.
+
+
+
+File PDF utilizzato:
+
+
+[Python3] - Encrypted
+
+# import PdfFileWriter and PdfFileReader 
+# class from PyPDF2 library
+from PyPDF2 import PdfFileWriter, PdfFileReader
+  
+# create a PdfFileWriter object
+out = PdfFileWriter()
+  
+# Open our PDF file with the PdfFileReader
+file = PdfFileReader("myfile.pdf")
+  
+# Get number of pages in original file
+num = file.numPages
+  
+# Iterate through every page of the original 
+# file and add it to our new file.
+for idx in range(num):
+    
+    # Get the page at index idx
+    page = file.getPage(idx)
+      
+    # Add it to the output file
+    out.addPage(page)
+  
+  
+# Create a variable password and store 
+# our password in it.
+password = "pass"
+  
+# Encrypt the new file with the entered password
+out.encrypt(password)
+  
+# Open a new file "myfile_encrypted.pdf"
+with open("myfile_encrypted.pdf", "wb") as f:
+    
+    # Write our encrypted PDF to this file
+    out.write(f)
+
+
+ ----------------------------------------------------------------------------
+
+
+Questo creerà una copia del file originale e la crittograferà con la password inserita. Una volta che il PDF è crittografato, non può essere aperto senza inserire la password corretta.
+
+Decifrare il file PDF
+Ma cosa succede se vogliamo decrittografare il file PDF crittografato? Possiamo farlo anche con questa libreria. Il processo è quasi lo stesso. Apriremo il file crittografato con la password corretta e ne creeremo una copia iterando in ogni sua pagina e aggiungendolo al nostro nuovo file PDF.
+
+
+Ecco il codice:
+
+[Python3] - Decrypted
+
+# import PdfFileWriter and PdfFileReader 
+# class from PyPDF2 library
+from PyPDF2 import PdfFileWriter, PdfFileReader
+  
+# Create a PdfFileWriter object
+out = PdfFileWriter()
+  
+# Open encrypted PDF file with the PdfFileReader
+file = PdfFileReader("myfile_encrypted.pdf")
+  
+# Store correct password in a variable password.
+password = "pass"
+  
+# Check if the opened file is actually Encrypted
+if file.isEncrypted:
+  
+    # If encrypted, decrypt it with the password
+    file.decrypt(password)
+  
+    # Now, the file has been unlocked.
+    # Iterate through every page of the file
+    # and add it to our new file.
+    for idx in range(file.numPages):
+        
+        # Get the page at index idx
+        page = file.getPage(idx)
+          
+        # Add it to the output file
+        out.addPage(page)
+      
+    # Open a new file "myfile_decrypted.pdf"
+    with open("myfile_decrypted.pdf", "wb") as f:
+        
+        # Write our decrypted PDF to this file
+        out.write(f)
+  
+    # Print success message when Done
+    print("File decrypted Successfully.")
+else:
+    
+    # If file is not encrypted, print the 
+    # message
+    print("File already decrypted.")
+
+
+ ----------------------------------------------------------------------------
+
+
+In questo modo verrà creata una copia del file crittografato che non richiede l'apertura di una password.
+
+Quindi, questo era uno script di base per crittografare e decrittografare i file PDF. Ma ci sono una miriade di idee per estenderlo. È possibile creare uno strumento GUI per farlo o sviluppare un'applicazione Web che crittografa i file PDF. Puoi anche creare un intero PDF Manager usando la libreria PyPDF2.
+
+  Attenzione geek! Rafforza le tue basi con il corso Python Programming Foundation e impara le basi.
+
+Per cominciare, i preparativi per il colloquio Migliora i tuoi concetti di strutture dati con il corso Python DS. E per iniziare con il tuo viaggio nel machine learning, iscriviti al Machine Learning - Corso di livello base.

@@ -1,0 +1,113 @@
+
+https://www.mattepuffo.com/blog/articolo/2693-unire-file-pdf-in-python.html
+
+ -----------------------------------------------------------------------------
+
+
+
+
+
+                                 Unire file PDF in Python
+
+
+
+
+
+Ho scoperto per Python la libreria PyPDF2, che ci permette di fare praticamente
+qualsiasi operazionei sui PDF.
+
+Oggi vediamo come unirli.
+
+Prima di tutto installiamola:
+
+# pip3 install PyPDF2
+
+Sul mio desktop ho diversi files nominati in file1.pdf, file2.pdf, ecc.
+
+Andremo a prenderli e ad unirli in uno unico:
+
+from PyPDF2 import PdfFileReader, PdfFileWriter
+import glob
+
+def mergePdf(pathInput, pathOutput):
+    pdfWriter = PdfFileWriter()
+
+    for path in pathInput:
+        pdfReader = PdfFileReader(path)
+        for page in range(pdfReader.getNumPages()):
+            pdfWriter.addPage(pdfReader.getPage(page))
+
+    with open(pathOutput, 'wb') as f:
+        pdfWriter.write(f)
+
+inputPath = glob.glob('/home/matte-server/Scrivania/file*.pdf')
+inputPath.sort()
+filePdf = '/home/matte-server/Scrivania/merged.pdf'
+mergePdf(inputPath, filePdf)
+
+La funzione glob ci permette di creare una sorta di array seguendo la "regex"
+passata in argomento.
+
+Iteriamo su tutti i file e li aggiungiamo a quello unico.
+
+Ovviamente la lista dei files da unire potete crearla come meglio credete.
+
+Enjoy!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+python pip pdf pypdf2
+
+Share this Post
+
+Commentami!
+
+Nome [                    ]
+Email [                    ]
+          [                    ]
+          [                    ]
+          [                    ]
+          [                    ]
+          [                    ]
+          [                    ]
+          [                    ]
+Messaggio [                    ]
+Inserisci il numero corretto [                    ]
+[ ] Vuoi ricevere email in risposta?
+[ ] Dichiaro di aver letto ed accettato la Privacy Policy
+[Invia]
+Mattepuffo.com
+
+About Mattepuffo.com
+
+Blog dedicato all'informatica e alla programmazione!
+Tutti i contenuti di questo blog, tranne casi particolari, sono sotto licenza
+Licenza Creative Commons Creative Commons Attribution-Noncommercial-Share Alike
+2.5. .
+
+Success! You've been added to our email list.
+
+Altri Links
+
+  • About
+  • Scrivimi
+  • Copyright
+  • Sitemap
+  • matteo.ferrone@yahoo.it
+  • GitHub
+  • Privacy Policy
+
+Statistiche
+
+  • Versione Blog: 6
+
+  • 3058 articoli
+
+  • 355 commenti
+
+  • 24 progetti
+
+2021 © Copyright and License | Matteo Ferrone
+
+  • Sitemap
+  • Scrivimi
+
