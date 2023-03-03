@@ -1,0 +1,33 @@
+
+https://www.iprogrammatori.it/forum-programmazione/cplusplus/errore-segmentazione-core-dump-creato-t19798.html
+
+-----------------------------------------------------------------------------
+
+
+
+
+
+                  CONSIGLI PER PREVENIRE L' ERRORE DI SEGMENTAZIONE
+
+
+
+
+
+Non serve guardare il codice: e' ovvio! 
+
+Antefatti: linguaggio C, vettori di byte (detti stringhe di caratteri, ma e' fondamentale non dimenticarselo), non grande esperienza di programmazione in C
+
+Effetto: core dump
+
+Causa: puntatore e 0 o tentativo di scrivere oltre lo spazio disponibile in un buffer. 
+
+Soluzione: non facile. Per prima cosa devi trovare in quale punto del programma avviene il crash. 
+
+Poi, prendere i provvedimenti opportuni
+
+Assioma: le funzioni della libreria standard sono state testate da talmente tanto tempo e persone che si puo' escludere a priori che il problema sia li.
+
+Quello che hai scritto tu, invece, anche se fino addesso sembrava funzionare, deve essere ricontrollato minuziosamente.
+
+I bug legati al non corretto uso dei puntatori e alla scrittura oltre allo spazio messi a dispoziione da un buffer e' uno dei problemi piu' difficili da identificare.
+Il problema e' legato proprio al fatto che fino ad un certo punto il programma funzionava correttamente, e poi BOOM ... non va piu' un accidente!
