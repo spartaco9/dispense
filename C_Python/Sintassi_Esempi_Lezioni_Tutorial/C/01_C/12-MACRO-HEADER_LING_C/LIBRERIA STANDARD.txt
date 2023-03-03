@@ -1,0 +1,88 @@
+
+                          LIBRERIA STANDARD DEL C
+
+
+La Libreria standard del C è una raccolta di Header file e librerie di funzioni usate per implementare operazioni comuni, come l'input/output e l'elaborazione di stringhe nel linguaggio di programmazione C. Diversamente da altri linguaggi come il Pascal ed il PL/I, il C non include keyword integrate per questi scopi, quindi quasi tutti i programmi C si basano sulla libreria standard per funzionare.
+
+
+Indice
+
+
+1	Design
+2	Storia
+3	Standard ANSI
+4	Libreria degli header file del C ANSI
+5	La libreria standard del C nel C++
+6	Librerie comuni di supporto
+7	Note
+8	Voci correlate
+9	Altri progetti
+10	Collegamenti esterni
+
+
+Design
+
+
+Il nome e le caratteristiche di ogni funzione sono incluse in un file chiamato header file ma l'implementazione vera e propria delle funzioni è in un file di libreria separato. I nomi e gli obiettivi degli header sono diventati comuni ma l'organizzazione delle librerie rimane non uniforme tra i vari compilatori. La libreria standard è solitamente inclusa con il compilatore. Dato che i compilatori C spesso forniscono funzionalità extra che non sono specificate nel C ANSI, una libreria standard con un particolare compilatore è spesso incompatibile con librerie standard di altri compilatori.
+
+Gran parte della libreria standard del C ha dimostrato di essere costruita bene. Qualche parte, con il senno di poi, è vista come mal costruita. La funzione di input gets() (e l'uso di scanf() per leggere input di stringhe) sono fonte di molti buffer overflow, e la maggior parte delle guide di programmazione raccomandano di non farne uso. Un'altra stranezza è strtok(), una funzione che è costruita come un primitivo analizzatore lessicale ma è molto "fragile" e difficile da usare.
+
+Storia[modifica | modifica wikitesto]
+Il linguaggio C, prima di essere standardizzato, non aveva a disposizione alcune funzionalità come ad esempio le operazioni di I/O (diversamente da altri linguaggi tradizionali quali il Pascal ed il Fortran). Col passare del tempo, le comunità di utenti del C condivisero idee ed implementazioni di quelle che ora noi chiamiamo librerie standard del C per sopperire a queste mancanze. Molte di quelle idee furono incorporate nelle definizioni del linguaggio C standardizzato.
+
+Sia UNIX che il C furono creati ai laboratori Bell dell'AT&T, la principale compagnia telefonica statunitense[1], nei tardi anni sessanta e nei primi anni settanta da Brian Kernighan e Dennis Ritchie, nell'ambito del processo aziendale di creare un sostituto digitale alle centrali di commutazione telefoniche analogiche. Durante gli anni settanta il linguaggio C divenne sempre più famoso. Molte università e organizzazioni iniziarono a creare le loro variazioni del linguaggio per i loro progetti. Dagli inizi degli anni ottanta iniziarono a diventare evidenti problemi di compatibilità tra le varie implementazioni del C. Nel 1983 l'ANSI (American National Standards Institute) formò un comitato per stabilire una specifica standard del C conosciuto come "C ANSI". Questo lavoro culminò nella creazione dello standard C89 nel 1989. Parte dello standard risultante era un set di librerie chiamato libreria standard del C ANSI.
+
+Successive revisioni del C standard hanno aggiunto numerosi header file alla libreria. Il supporto per queste nuove estensioni dipende dalle implementazioni.
+
+Gli header <iso646.h>, <wchar.h>, e <wctype.h> furono aggiunti con il Normative Amendment 1 (d'ora innanzi abbreviato con NA1), un'aggiunta al C standard ratificata nel 1995.
+
+Gli header <complex.h>, <fenv.h>, <inttypes.h>, <stdbool.h>, <stdint.h>, e <tgmath.h> furono aggiunti con il C99, una revisione al C standard pubblicata nel 1999.
+
+Standard ANSI[modifica | modifica wikitesto]
+La libreria C ANSI standard consiste in 24 header file C che possono essere inclusi nel progetto di un programmatore con una singola direttiva. Ogni header consiste in una o più dichiarazioni di funzioni, definizioni di tipi e macro. Il contenuto di questi header file si può trovare più avanti.
+
+Rispetto ad altri linguaggi (per esempio il Java) la libreria standard è molto piccola. Questa dispone di un set base di funzioni matematiche, funzioni per la manipolazione di stringhe, conversione di tipi e I/O da file e da console. Non contiene un set standard di "contenitori di tipi" come la libreria standard dei template del C++, non dispone nemmeno di tool per creare interfacce grafiche per utenti (GUI), strumenti per la rete e molte altre funzionalità di cui dispone il Java. Il vantaggio principale di una libreria piccola e che è più facile fornire un ambiente ANSI C funzionante rispetto ad altri linguaggi, e conseguentemente è relativamente facile fare porting verso altre piattaforme.
+
+Molte altre librerie sono state sviluppate per fornire le funzionalità equivalenti a quelle fornite da altri linguaggi nelle loro librerie standard. Per esempio, il progetto di ambiente desktop GNOME ha permesso di sviluppare il tool grafico GTK+ e la GLib, una libreria contenente strutture dati, e ci sono molti altri esempi conosciuti. La varietà di librerie disponibili è spiegabile con il fatto che alcune librerie, migliori di altre, hanno dimostrato la propria superiorità con il passare del tempo. Il problema principale è che spesso diverse librerie non funzionano bene insieme e i programmatori che sono pratici con alcuni set di librerie potrebbero trovarne set diversi su differenti piattaforme.
+
+
+Libreria degli header file del C ANSI
+
+
+Nome	Descrizione
+<assert.h>	Contiene la macro assert, utilizzata per identificare errori logici ed altri tipi di bug nelle versioni di debug di un programma.
+<complex.h>	Un gruppo di funzioni usate per manipolare numeri complessi. (Aggiunto con il C99)
+<ctype.h>	Questo header file contiene funzioni usate per classificare i caratteri in base ai loro tipi o per convertirli da maiuscoli a minuscoli, indipendentemente dal set di caratteri utilizzato (tipicamente ASCII, ma esistono anche implementezioni che usano l'EBCDIC).
+<errno.h>	Per testare i codici di errore restituiti dalle funzioni di libreria.
+<fenv.h>	Per controllare l'ambiente in virgola mobile. (Aggiunto con il C99)
+<float.h>	Contiene delle costanti definite che indicano le proprietà specifiche dell'implementazione della libreria in virgola mobile, come ad esempio la minima differenza tra due numeri in virgola mobile (_EPSILON), il massimo numero di cifre significative (_DIG) e l'intervallo di numeri che possono essere rappresentati (_MIN, _MAX).
+<inttypes.h>	Per effettuare conversioni precise tra i tipi interi. (Aggiunto con il C99)
+<iso646.h>	Per programmare nel set di caratteri ISO 646. (Aggiunto con l'NA1)
+<limits.h>	Contiene delle costanti definite che indicano le proprietà specifiche dell'implementazione dei tipi interi, come l'intervallo dei numeri rappresentabili (_MIN, _MAX).
+<locale.h>	Per setlocale() e le costanti relative. Utilizzato per scegliere il codice locale adatto.
+<math.h>	Per le funzioni matematiche comuni.
+<setjmp.h>	Dichiara setjmp/longjmp, utilizzate per salti non locali.
+<signal.h>	Per controllare varie condizioni d'eccezione.
+<stdarg.h>	Utilizzato da funzioni che accettano un numero variabile di parametri.
+<stdbool.h>	Per un tipo di dato booleano. (Aggiunto con il C99)
+<stdint.h>	Per definire vari tipi interi. (Aggiunto con il C99)
+<stddef.h>	Per definire vari tipi e macro utili.
+<stdio.h>	Fornisce le funzionalità basilari di input/output del C. Questo file include il prototipo delle venerabili funzioni printf e scanf.
+<stdlib.h>	Per eseguire un gran numero di operazioni, tra cui conversioni, generazione di numeri pseudo-casuali, allocazione di memoria, controllo del processo, variabili d'ambiente, segnali, ricerca ed ordinamento.
+<string.h>	Per manipolare le stringhe.
+<tgmath.h>	Per funzioni matematiche di tipo generico. (Aggiunto con il C99)
+<time.h>	Per convertire tra vari formati di data e ora.
+<wchar.h>	Per manipolare stream o stringhe contenenti caratteri estesi - fondamentale per supportare una lunga serie di lingue con caratteri non occidentali. (Aggiunto con l'NA1)
+<wctype.h>	Per la classificazione dei caratteri estesi. (Aggiunto con l'NA1)
+La libreria standard del C nel C++[modifica | modifica wikitesto]
+Il C++ include le funzionalità della libreria standard del C ANSI, ma apporta numerose modifiche, come la modifica del nome degli header file da <xxx.h> a <cxxx> (i nomi nello stile C sono ancora disponibili, ma sono considerati obsoleti) oppure l'inserimento di tutti gli identificatori nello spazio dei nomi (namespace) std.
+
+
+Librerie comuni di supporto
+
+
+Nonostante questo comportamento non sia standardizzato, i programmi C potrebbero dipendere da una libreria di funzioni di runtime che contengono del codice che il compilatore usa al momento dell'esecuzione. Il codice che inizializza il processo per il sistema operativo prima della chiamata del main(), ad esempio, è implementato nella Libreria di Runtime del C di ogni specifico compilatore. Il codice della libreria di runtime potrebbe essere utile per eventuali future implementazioni del linguaggio, come ad esempio la gestione delle eccezioni o l'implementazione di codice in virgola mobile.
+
+La libreria standard del C documenta soltanto che le specifiche funzioni menzionate in questo articolo sono disponibili e come si comportano. Poiché l'implementazione del compilatore potrebbe dipendere dalle funzioni addizionali presenti nella libreria di runtime, capita spesso che le routine specifiche del produttore siano aggiunte negli stessi moduli della libreria standard, dato che è molto probabile che un programma creato con questo compilatore necessiti di entrambe le cose.
+
+Nonostante la confusione causata da questa aggiunta, la libreria di runtime del C non è una parte standardizzata del linguaggio e dipende dal produttore.

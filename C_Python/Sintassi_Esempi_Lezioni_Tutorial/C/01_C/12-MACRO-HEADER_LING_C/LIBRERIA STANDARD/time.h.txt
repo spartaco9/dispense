@@ -1,0 +1,37 @@
+
+                                     time.h
+
+
+time.h è l'header file della libreria standard del C che fornisce un accesso standardizzato alle funzioni di acquisizione e manipolazione del tempo.
+
+
+Indice
+
+
+1	Funzioni
+2	Costanti
+3	Tipi di dato
+4	Altri progetti
+5	Collegamenti esterni
+
+Funzioni
+
+Nome	Descrizione
+asctime	Converte il valore contenuto nella struttura di tipo tm passatale in una stringa simile a "Mon Aug 28 12:38:13 2006\n\0".
+clock	Restituisce il numero di "tick" della CPU utilizzati dal processo sin da quando è partito.
+ctime	Converte il tempo di calendario (tipo time_t *) in una stringa: è equivalente ad asctime(localtime(tp)).
+difftime	Restituisce la differenza in millisecondi tra due tempi di calendario (tipo time_t).
+gmtime	Converte il tempo di calendario (tipo time_t *) in una struttura tm (intesa come ora UTC).
+localtime	Converte il tempo di calendario (tipo time_t) in una struttura tm (intesa come ora locale).
+mktime	Converte una struttura tm in un valore di tempo di calendario (tipo time_t) (intesa come ora locale).
+time	Restituisce l'attuale tempo di calendario (tipo time_t).
+Costanti[modifica | modifica wikitesto]
+Nome	Valore	Descrizione
+CLOCKS_PER_SEC		Definisce il numero di "tick" della CPU che trascorrono in un secondo. clock()/CLOCKS_PER_SEC risulta quindi essere un tempo espresso in secondi.
+
+Tipi di dato
+
+Nome	Descrizione
+clock_t	Tipo di dato restituito da clock(). Generalmente definito come un long int.
+time_t	Tipo di dato restituito da time(), rappresenta un tempo di calendario. Generalmente definito come un long int.
+tm	Struttura usata e restituita da asctime(), gmtime(), localtime() e mktime().

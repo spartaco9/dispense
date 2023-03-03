@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1250931206 source:g:\dati\scuola\esercizi\c++ esercizi\struct\mp3collection\prof.cpp
+	<cstdlib>
+	<iostream>
+	<fstream>
+	<string>
+	<cmath>
+
+1253568931 source:g:\dati\scuola\esercizi\c++ esercizi\struct\mp3collection\main.cpp
+	<cstdlib>
+	<iostream>
+	"prof.h"
+	<conio.h>
+
+1252853416 g:\dati\scuola\esercizi\c++ esercizi\struct\mp3collection\prof.h
+	<string>
+

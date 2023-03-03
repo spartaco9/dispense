@@ -1,0 +1,68 @@
+
+                                    ctype.h
+
+
+
+ctype.h è l'header file che, all'interno della libreria standard del C, dichiara funzioni utilizzate per la classificazione dei caratteri.
+
+Indice  [nascondi] 
+1	Storia
+2	Implementazione
+3	Funzioni
+4	Errori comuni
+5	Altri progetti
+6	Collegamenti esterni
+Storia[modifica | modifica wikitesto]
+I primi programmatori in linguaggio C su Unix cominciarono rapidamente a sviluppare dei controlli per classificare i caratteri tra diversi tipi: numero, lettera,carattere di controllo, oppure sottoinsiemi quali lettera maiuscola o lettera minuscola, per concludere con insiemi più vasti quali carattere stampabile. Per eseguire queste classificazioni, inizialmente furono ideati dei test molto semplici; il seguente esempio mostra come identificare se il carattere contenuto nella variabile c è una lettera:
+
+if ('A' <= c && c <= 'Z' || 'a' <= c && c <= 'z')
+Il risultato di questa espressione è valido se c rappresenta un carattere secondo la codifica ASCII: al contrario, non funziona se il set di caratteri usato sulla macchina è, ad esempio, EBCDIC. Oltre a non essere portabile, un programma basato pesantemente su test come questo sarebbe molto difficile da mantenere, data la non immediata comprensibilità del codice: questo esporrebbe il programmatore ad errori logici più o meno gravi.
+
+Implementazione[modifica | modifica wikitesto]
+A differenza di quanto riportato sopra, le funzioni di classificazione di caratteri non sono scritte in forma di test comparativi. Nella maggior parte delle librerie C, infatti, esse sono implementate con delle ricerche in tabelle allocate staticamente.
+
+Ad esempio, la tabella può essere implementata con un array di 256 interi da 8 bit ciascuno, organizzati come bitfield, dove a ciascun bit corrisponde una particolare proprietà del carattere: numero, lettera e così via. Se il bit meno significativo del numero intero corrispondesse alla proprietà numero, il codice per la funzione (o, meglio, la macro) isdigit() potrebbe essere scritto semplicemente come:
+
+#define isdigit(x) (TABLE[x] & 1)
+Le prime versioni di Linux, però, utilizzavano un metodo simile al seguente, che potenzialmente esponeva il codice ad errori logici:
+
+#define isdigit(x) ((x) >= '0' && (x) <= '9')
+Questa definizione potrebbe causare problemi se la determinazione del valore di x avesse degli effetti collaterali, come in isdigit(x++) oppure isdigit(esegui_qualcosa()). In questo caso l'espressione sarebbe valutata due volte, cosa non immediatamente evidente al programmatore distratto. Per questo, il metodo della tabella è utilizzato più diffusamente (vedere anche il messaggio di Linus Torvalds nella mailing list del kernel Linux, in basso alla pagina).
+
+Funzioni[modifica | modifica wikitesto]
+Il file ctype.h contiene una dozzina di funzioni di classificazione dei caratteri: esse sono tutte dipendenti dalle impostazioni locali del sistema, tranne isdigit(). Inoltre, le funzioni possono essere divise in due sottogruppi: quelle utilizzate per la verifica delle proprietà dei caratteri e quelle per la conversione degli stessi.
+
+Nome	Descrizione
+Funzioni per la verifica delle proprietà dei caratteri
+Ritornano zero se falso o un numero diverso da zero se vero.
+isalnum	Controlla che il carattere passato sia alfanumerico.
+isalpha	Controlla che il carattere passato sia alfabetico.
+isblank	Controlla che il carattere passato sia bianco, cioè non visibile a schermo (spazio o tabulazione). (introdotto dal C99)
+iscntrl	Controlla che il carattere passato sia di controllo.
+isdigit	Controlla che il carattere passato sia numerico. (non dipendente dalle impostazioni locali)
+isgraph	Controlla che il carattere passato sia grafico, cioè abbia un glifo ad esso associato. I caratteri di spaziatura, ad esempio, non sono considerati grafici.
+islower	Controlla che il carattere passato sia minuscolo.
+isprint	Controlla che il carattere passato sia stampabile.
+ispunct	Controlla che il carattere passato sia di punteggiatura.
+isspace	Controlla che il carattere passato sia di spaziatura.
+isupper	Controlla che il carattere passato sia maiuscolo.
+isxdigit	Controlla che il carattere passato sia esadecimale, cioè sia compreso in 0-9, oppure a-f, oppure A-F.
+Funzioni per la conversione dei caratteri
+Ritornano il carattere convertito.
+tolower	Converte il carattere passato nel suo corrispondente minuscolo, se applicabile.
+toupper	Converte il carattere passato nel suo corrispondente maiuscolo, se applicabile.
+La versione 3 della Single Unix Specification aggiunge ulteriori funzionalità aggiuntive:
+
+Nome	Descrizione
+isascii	Controlla che il carattere passato sia compatibile con il set di caratteri ASCII.
+toascii	Converte il carattere passato affinché sia compatibile con il set di caratteri ASCII.
+Errori comuni[modifica | modifica wikitesto]
+Lo standard C99 afferma chiaramente (§7.4-1):
+
+In all cases the argument is an int, the value of which shall be representable as an unsigned char or shall equal the value of the macro EOF. If the argument has any other value, the behavior is undefined.
+In italiano:
+
+In tutti i casi [cioè tutti i parametri di funzione, ndt] gli argomenti sono degli int, il valore dei quali deve essere rappresentabile come un unsigned char oppure deve essere equivalente al valore della macro EOF. Se l'argomento assume un qualsiasi altro valore, il comportamento è indefinito.
+Sfortunatamente molti programmatori dimenticano che una variabile di tipo char può essere sia con segno che senza segno, a seconda dell'implementazione. Se il tipo char è con segno, allora la conversione implicita da char a int potrebbe generare dei valori negativi, che generano un comportamento indefinito. Generalmente accade che l'argomento negativo viene usato come indice in una tabella di ricerca, accedendo ad un'area fuori dalla tabella stessa e potenzialmente fuori dalla memoria allocata dal programma, arrivando anche a poter generare un errore di segmentazione.
+
+Il modo corretto per utilizzare i parametri char è, quindi, quello di eseguire un casting ad unsigned char.

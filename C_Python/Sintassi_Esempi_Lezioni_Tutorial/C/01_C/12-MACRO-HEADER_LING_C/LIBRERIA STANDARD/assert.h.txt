@@ -1,0 +1,43 @@
+
+                                     assert.h
+
+
+
+assert.h è l'header file della libreria standard del C che definisce la macro assert(). Questa macro implementa un sistema di controllo delle asserzioni, che può essere utilizzato per verificare e controllare l'eventuale verificarsi di casi "impossibili" nel programma.
+
+Nome	Descrizione
+assert	Quando questa macro viene eseguita, essa computa il risultato dell'espressione fornìtale: se essa risulta essere falsa (in altre parole, se il valore finale risulta essere 0), assert scrive alcune informazioni di debug su stderr e, successivamente, richiama la funzione abort(). Le informazioni riportate su stderr includono:
+il testo dell'espressione che ha fornito il risultato 0
+il nome del file sorgente (la macro predefinita __FILE__)
+il numero della linea in cui si è fallita l'asserzione (la macro predefinita __LINE__)
+L'utilità della macro assert() risiede nella semplicità con la quale si può verificare un'affermazione che si ritiene, in un dato contesto, banalmente ovvia: ad esempio, ricontrollare il valore di una variabile sulla quale si sono già effettuate delle verifiche. Nel codice che segue, la macro assert() viene utilizzata per controllare che il valore della variabile "scelta" sia effettivamente compreso nel range valido, nonostante l'uscita dal ciclo while implicitamente affermi la veridicità di questa condizione.
+
+int scelta = 0;
+
+do {
+
+    /* Visualizzo un menu con 4 scelte numerate da 1 a 4 */
+    scanf("%d", &scelta);
+
+} while (scelta<1 || scelta>4);
+
+/* Primo blocco di operazioni eseguite in base al valore scelto */
+
+assert(scelta>=1 && scelta <=4);
+
+/* Secondo blocco di operazioni eseguite in base al valore scelto */
+Utilizzando assert(), il programmatore si accerta nuovamente che la condizione che aveva provocato l'uscita dal ciclo while sia ancora vera: in questo caso, ad esempio, verifica di non aver accidentalmente modificato il valore della variabile scelta all'interno del primo blocco di operazioni.
+L'utilizzo di assert() dovrebbe essere limitato alla sola fase di sviluppo di un programma: per la brutalità del metodo di chiusura dell'eseguibile e per la scarsezza di informazioni sull'errore fornite a video, risulterebbe abbastanza frustrante per l'utente finale se utilizzato nella versione definitiva di un applicativo. Buona programmazione vorrebbe, infatti, che venga spiegato all'utente quale causa abbia scatenato il problema e, nel caso non fosse possibile proseguirne l'esecuzione, almeno permettere un salvataggio parziale dello stato del programma. Per questo, un codice simile a:
+
+int *ptr = malloc(sizeof(int) * 10);
+assert(ptr != NULL);
+/* utilizzo di ptr */
+non rappresenta un uso ottimale di assert(), perché, anche se raramente, è possibile che un'allocazione dinamica di memoria fallisca.
+
+Quando il programmatore non ha più bisogno delle asserzioni, invece di eliminarle tutte manualmente può definire la costante NDEBUG prima di includere nel file sorgente l'header assert.h: in questo modo, la macro assert() viene espansa semplicemente in:
+
+#define assert(ignore)((void) 0)
+eliminando quindi tutte le possibili interazioni con il programma. Bisogna però far notare che, in questo caso, l'espressione passata ad assert() non viene valutata: eventuali espressioni con effetti collaterali, come ad esempio
+
+assert(*i++);
+potrebbero modificare la logica del programma a seconda della definizione o meno della costante NDEBUG. In questo esempio, infatti, al termine della verifica dell'asserzione, il valore del puntatore i risulterebbe incrementato di una unità nel caso NDEBUG non sia definito, mentre resterebbe inalterato nel caso opposto.

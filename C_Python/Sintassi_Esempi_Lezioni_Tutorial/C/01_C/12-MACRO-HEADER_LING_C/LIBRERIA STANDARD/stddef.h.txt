@@ -1,0 +1,78 @@
+
+                                 stddef.h
+
+
+
+stddef.h che sta per "standard definition header" è un header file compreso nella libreria standard del C che definisce le macro NULL e offsetof e i tipi ptrdiff_t, wchar_t, e size_t.
+
+
+Indice
+
+
+1	Inclusione
+2	Namespace
+3	NULL
+4	offsetof(tipo, membro)
+5	Tipo size_t
+6	Tipo wchar_t
+7	Tipo ptrdiff_t
+8	Collegamenti esterni
+Inclusione[modifica | modifica wikitesto]
+In C, l'header file "stddef.h", si include scrivendo:
+
+#include <stddef.h>
+/* ... */
+In C++, invece si include l'header file "cstddef", scrivendo:
+
+#include <cstddef>
+// ...
+
+Namespace
+
+L'header file "stddef.h" mette le sue definizioni in ambito globale; l'header file "cstddef" mette invece size_t e ptrdiff_t nel namespace std.
+
+
+NULL
+
+Exquisite-kfind.png	Lo stesso argomento in dettaglio: Null (computer programming).
+È una macro che viene espansa in un puntatore a null costante. Può essere definito come ((void*)0), 0 oppure 0L (zero Long) a seconda del compilatore e del linguaggio.
+
+
+offsetof(tipo, membro)
+
+Exquisite-kfind.png	Lo stesso argomento in dettaglio: offsetof.
+Una macro funzionale usata per determinare l'offset in byte del campo membro di una struct del tipo indicato.
+
+Esempio:
+
+typedef struct provola
+{
+  int peso;
+  char colore;
+
+} PROVOLA;
+
+int main()
+{
+ ...
+  printf("%d",offsetof(PROVOLA,colore));
+}
+Il programma sopra stampa su schermo il numero di byte a partire dal quale si trova colore; se ad esempio sizeof(int) vale 4 darà 4.
+
+
+Tipo size_t
+
+Exquisite-kfind.png	Lo stesso argomento in dettaglio: size_t.
+Il tipo size_t è il tipo appropriato per rappresentare la dimensione di oggetti che stanno in aree di memoria, e per dereferenziare gli elementi di un array. Ha una dimensione che dipende dall'implementazione; in genere ha una rappresentazione a 32 bit nei sistemi a 32 bit e una rappresentazione a 64 bit nei sistemi a 64 bit. È unsigned. Ha una variante signed, ssize_t, definita nell'header file, "unistd.h" di UNIX.
+
+
+Tipo wchar_t
+
+Exquisite-kfind.png	Lo stesso argomento in dettaglio: wchar_t.
+Sta per "wide character type" ed è un tipo inteso a rappresentare un carattere generico (più generico di char che rappresenta solo i caratteri del codice ASCII); è predefinto in C++ mentre richiede l'header file "stddef.h" o il "wchar.h" in C.
+
+
+Tipo ptrdiff_t
+
+Exquisite-kfind.png	Lo stesso argomento in dettaglio: ptrdiff_t.
+Il tipo ptrdiff_t serve a contenere il risultato della sottrazione tra due puntatori. Il tipo reale sottostante di ptrdiff_t varia da implementazione a implementazione.

@@ -1,0 +1,11 @@
+calcolare quanti km percorro in base alla mia velocita'
+
+se io vado a 60 km orari x 40 minuti quanti km percorro?
+
+60 / 60 * 40 = 40
+
+se io vado a 340 km orali x 40 minuti quanti km percorro?
+
+km per secondi diviso tempo percorso
+
+totale=km*secondi/tempo - (calcolo della velocita' km/h)

@@ -1,0 +1,16 @@
+
+                                   errno.h
+
+
+
+errno.h è l'header file della libreria standard del C che contiene definizioni di macro per la gestione delle situazioni di errore.
+
+Nome	Descrizione
+EDOM	Costante intera positiva che indica un errore di dominio, come in sqrt(-1).
+EILSEQ	Costante intera positiva che indica un sequenza illegale di byte.
+ERANGE	Costante intera positiva che indica un risultato troppo grande e pertanto non rappresentabile.
+La libreria funziona in questo modo: ogni volta che una funzione matematica (definite in math.h) incappa in un errore, restituisce un valore significativo e documentato per segnalare genericamente la situazione. Contemporaneamente, imposta errno (un lvalue modificabile, cioè, semplificando, una variabile), definito in questa libreria, al valore che indica lo specifico errore occorso. Il valore di errno è zero all'avvio del programma ed è garantito che nessuna funzione di libreria lo azzeri: il programmatore, quindi, dovrebbe, nella funzione chiamante quella matematica che potrebbe generare l'errore, azzerare il valore di errno prima della chiamata e, successivamente ad essa, verificarne il valore, prima di richiamare altre funzioni che potrebbero modificare errno.
+
+Altri sistemi operativi conformi a POSIX, come Unix o Linux, potrebbero includere altre macro per rappresentare ulteriori situazioni di errore (vedere anche i collegamenti esterni).
+
+Il 19 dicembre 2003 lo SCO Group citò in giudizio svariate aziende (incluse in Fortune 1000 e Global 500), ritenendo che parti del kernel di Unix, tra cui il file errno.h, fossero state illecitamente ricopiate nei sorgenti di Linux. Linus Torvalds, il creatore e detentore del marchio registrato Linux, ha negato le pretese della SCO, affermando di aver scritto di proprio pugno il codice in questione.

@@ -1,0 +1,53 @@
+
+                                     math.h
+
+
+math.h è l'header file della libreria standard del C che contiene definizioni di macro, costanti e dichiarazioni di funzioni e tipi usati per le operazioni matematiche.
+
+
+Indice
+ 
+1	Funzioni membro Pre-C99
+2	Esempio d'uso
+3	Altri progetti
+4	Collegamenti esterni
+Funzioni membro Pre-C99[modifica | modifica wikitesto]
+Membro	Descrizione
+acos	arcocoseno
+asin	arcoseno
+atan	arcotangente
+atan2	arcotangente di due parametri
+ceil	l'intero minore non minore del parametro
+cos	coseno
+cosh	coseno iperbolico
+exp(double x)	funzione esponenziale, calcola ex
+fabs	valore assoluto
+floor	l'intero maggiore non maggiore del parametro
+fmod	resto del numero in virgola mobile
+frexp	frazione e potenza di due.
+ldexp	operazione in virgola mobile
+log	logaritmo naturale
+log10	logaritmo in base 10
+pow(x,y)	eleva un valore dato ad esponente, xy
+sin	seno
+sinh	seno iperbolico
+sqrt	radice quadrata
+tan	tangente
+tanh	tangente iperbolica
+Esempio d'uso[modifica | modifica wikitesto]
+Ecco un programma che calcola il quadrato e la radice quadrata di un numero.
+
+#include <math.h>
+#include <stdio.h>
+
+int main()
+    {
+      float num,radice,quadrato;
+      printf ("Inserisci un numero ");
+      scanf ("%f",& num);
+      quadrato= pow(num,2);
+      radice= sqrt(num);
+      printf ("Il quadrato del numero e' %f\n",quadrato);
+      printf ("La radice del numero e' %f\n",radice);
+      return 0;
+    }

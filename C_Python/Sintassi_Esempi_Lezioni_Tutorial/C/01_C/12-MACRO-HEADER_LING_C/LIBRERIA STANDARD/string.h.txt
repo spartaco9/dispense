@@ -1,0 +1,62 @@
+
+                                  string.h
+
+
+string.h è l'header file della libreria standard del C che contiene definizioni di macro, costanti e dichiarazioni di funzioni e tipi usati non solo nella manipolazione delle stringhe ma anche nella manipolazione della memoria.
+
+Le funzioni dichiarate in string.h sono molto popolari ed essendo parte della libreria standard del C, il loro funzionamento è garantito su ogni piattaforma che supporta il linguaggio C. Tuttavia, l'esistenza di alcuni problemi di sicurezza con queste funzioni, come per esempio problemi di buffer overflow, portano i programmatori a scegliere delle varianti più sicure ma meno portabili. Inoltre le funzioni in questione lavorano solamente con caratteri ASCII o con un set di caratteri che lo estende in modo compatibile come l'ISO 8859-1. La gestione di stringhe non compatibili con l'ASCII viene generalmente risolto con l'uso della libreria wchar.h.
+
+
+Indice
+
+
+1	Costanti e tipi
+2	Funzioni
+2.1	Estensioni per ISO C
+3	Altri progetti
+4	Collegamenti esterni
+Costanti e tipi[modifica | modifica wikitesto]
+Nome	Descrizione
+NULL	Una macro che rappresenta la costante puntatore nullo; in altre parole, una costante che rappresenta un valore che è garantito essere l'indirizzo di una posizione non valida nella memoria.
+size_t	Un intero senza segno restituito dell'operatore sizeof.
+
+Funzioni
+
+Nome	Descrizione
+void *memcpy(void *dest, const void *src, size_t n);	Copia n bytes tra due aree di memoria che non devono sovrapporsi.
+void *memmove(void *dest, const void *src, size_t n);	Copia n bytes tra due aree di memoria; a differenza di memcpy le aree di memoria possono sovrapporsi.
+void *memchr(const void *s, int c, size_t n);	Ritorna un puntatore alla prima occorrenza di c in s, o NULL se c non compare tra i primi n caratteri di s.
+int memcmp(const void *s1, const void *s2, size_t n);	Confronta i primi n caratteri di s1 con s2.
+void *memset(void *s, int c, size_t n);	Colloca c nei primi n caratteri di s.
+char *strcat(char *dest, const char *src);	Concatena src alla stringa dest.
+char *strncat(char *dest, const char *src, size_t n);	Concatena al massimo n caratteri src alla stringa dest.
+char *strchr(const char *s, int c);	Restituisce un puntatore alla prima occorrenza di c in s.
+char *strrchr(const char *s, int c);	Restituisce un puntatore all'ultima occorrenza di c in s.
+int strcmp(const char *s1, const char *s2);	Confronta la stringa s1 con s2.
+int strncmp(const char *, const char *, size_t);	Confronta al massimo n caratteri della stringa s1 con s2.
+int strcoll(const char *, const char *);	Confronta due stringhe utilizzando l'ordine lessicografico stabilito dalla localizzazione utilizzata
+char *strcpy(char *s1, const char *s2);	Copia la stringa s2 nella stringa s1, incluso il carattere di terminazione \0.
+char *strncpy(char *s1, const char *s2, size_t n);	Copia al massimo n caratteri della stringa s2 in s1.
+char *strerror(int n);	Restituisce un puntatore alla stringa che corrisponde all'errore n.
+size_t strlen(const char *s);	Restituisce la lunghezza della stringa s.
+size_t strspn(const char *s, const char *accept);	Restituisce la lunghezza della prima istanza della stringa s di lunghezza massima composta esattamente dai caratteri definiti della stringa accept
+size_t strcspn(const char *s, const char *reject);	Restituisce la lunghezza della porzione iniziale della stringa s di lunghezza massima composta esattamente da caratteri diversi da quelli della stringa reject
+char *strpbrk(const char *s, const char *accept);	Restituisce la prima occorrenza di un carattere presente nella stringa s che sia uguale ad un qualsiasi carattere presente nella stringa accept
+char *strstr(const char *haystack, const char *needle);	Trova la prima occorrenza della stringa needle all'interno della stringa haystack
+char *strtok(char *s, const char *delimiters);	Spezza la stringa s in una serie di stringhe chiamate [token] in corrispondenza dei carattere delimitatore delimiters
+size_t strxfrm(char *dest, const char *src, size_t n);	Trasforma la stringa puntata da src secondo la localizzazione in uso e e copia i primi n caratteri di src nella stringa dest
+
+Estensioni per ISO C
+
+Nome	Descrizione	Specifica
+char *strdup(const char *);	alloca e duplica una stringa nella memoria	POSIX; originariamente una estensione di BSD
+errno_t strcpy_s(char *restrict s1, rsize_t s1max, const char *restrict s2);	variante di strcpy che include dei controlli sulla lunghezza delle stringhe	ISO/IEC WDTR 24731
+void *mempcpy(void *dest, const void *src, size_t n);	variante di memcpy che ritorna un puntatore al byte successivo all'ultimo byte scritto	GNU
+void *memccpy(void *dest, const void *src, int c, size_t n
+);
+
+copia fino ad n byte fra due aree di memoria non sovrapposte, fermandosi quando viene trovato il byte c	UNIX 98?
+int *strerror_r(int, char *, size_t);	restituisce una rappresentazione in stringa di un numero di errore (si veda errno) (thread-safe; alcune differenze semantiche fra la specifica GNU e XSI/POSIX)	GNU, POSIX
+size_t strlcpy(char *dest, const char *src, size_t n);	variante di strcpy che comprende controlli sulla lunghezza della stringa	originariamente OpenBSD, ora anche FreeBSD, Solaris, OS X
+char *strtok_r(char *, const char *, char **);	versione thread-safe di strtok	POSIX
+char *strsignal(int sig);	analogamente a strerror, ritorna una rappresentazione in stringa del segnale sig (non thread safe)	varie distribuzioni BSD, Solaris, Linux

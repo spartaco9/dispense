@@ -1,0 +1,5 @@
+Se vado a 70 all ora devo percorre 30 km quanto tempo impiego
+
+km per secondi diviso velocita oraria
+
+totale=km*secondi/velocita; 

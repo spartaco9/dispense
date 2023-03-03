@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="default" />
+	<File name="main.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="2827" topLine="0" />
+	</File>
+	<File name="mp3.txt" open="0" top="0" tabpos="0">
+		<Cursor position="1" topLine="0" />
+	</File>
+	<File name="prof.h" open="1" top="0" tabpos="2">
+		<Cursor position="0" topLine="0" />
+	</File>
+</CodeBlocks_layout_file>
+[Editors]
+Focused=0
+Order=0,1,2
+[Editor_0]
+Open=1
+Top=1
+CursorCol=5
+CursorRow=156
+TopLine=1
+LeftChar=1
+[Editor_1]
+Open=1
+Top=0
+CursorCol=4
+CursorRow=262
+TopLine=79
+LeftChar=1
+[Editor_2]
+Open=1
+Top=0
+CursorCol=1
+CursorRow=30
+TopLine=1
+LeftChar=1

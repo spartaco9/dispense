@@ -1,0 +1,33 @@
+                                 float.h
+
+
+float.h è un header file della libreria standard del C per il linguaggio di programmazione C che contiene delle macro che vengono espanse ai vari limiti e parametri dei tipi in virgola mobile (floating-point) standard.
+
+Macro
+
+Le macro, così come definite nello standard ISO 9899:1999 sezione 5.2.4.2.2 sono:
+
+FLT_ROUNDS - specifica il tipo di arrotondamento eseguito nelle addizioni in virgola mobile, con i seguenti valori:
+-1 indeterminabile;
+0 troncamento (rounding toward zero);
+1 arrotondamento al più vicino;
+2 arrotondamento verso l'infinito positivo;
+3 arrotondamento verso l'infinito negativo;
+altri valori indicano arrotondamenti definiti dall'implementazione.
+FLT_EVAL_METHOD - determina la modalità di valutazione di espressioni che coinvolgono tutti i tipi in virgola mobile:
+-1 indeterminabile;
+0 valuta tutte le operazioni e le costanti esclusivamente alla precisione dei tipi di appartenenza;
+1 valuta tutte le operazioni e le costanti del tipo float e double nell'intervallo e alla precisione del tipo double;
+2 valuta tutte le operazioni e le costanti nell'intervallo e alla precisione del tipo long double;
+altri valori indicano comportamenti definiti dall'implementazione.
+FLT_RADIX - base della rappresentazione esponenziale (almeno 2).
+FLT_MANT_DIG, DBL_MANT_DIG, LDBL_MANT_DIG - numero di cifre nella parte mantissa.
+DECIMAL_DIG - (almeno 10)
+FLT_DIG, DBL_DIG, LDBL_DIG - (almeno 6, 10, 10)
+FLT_MIN_EXP, DBL_MIN_EXP, LDBL_MIN_EXP
+FLT_MIN_10_EXP, DBL_MIN_10_EXP, LDBL_MIN_10_EXP, (almeno -37)
+FLT_MAX_EXP, DBL_MAX_EXP, LDBL_MAX_EXP
+FLT_MAX_10_EXP, DBL_MAX_10_EXP, LDBL_MAX_10_EXP (almeno +37)
+FLT_MAX, DBL_MAX, LDBL_MAX - (almeno 1E+37)
+FLT_EPSILON, DBL_EPSILON, LDBL_EPSILON - (almeno 1E-5, 1E-9, 1E-9)
+FLT_MIN, DBL_MIN, LDBL_MIN - (almeno 1E-37)

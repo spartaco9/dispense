@@ -1,0 +1,66 @@
+
+                                    stdlib.h
+
+
+stdlib.h (STanDard LIBrary, libreria standard) è l'header file che, all'interno della libreria standard del C, dichiara funzioni e costanti di utilità generale: allocazione della memoria, controllo dei processi, e altre funzioni generali comprendenti anche i tipi di dato. È compatibile con il C++ ed è noto in quell'ambito con il nome cstdlib.
+
+
+Indice
+
+
+1	Funzioni
+2	Costanti
+3	Tipi di dato
+4	Voci correlate
+5	Altri progetti
+6	Collegamenti esterni
+Funzioni[modifica | modifica wikitesto]
+Le funzioni di stdlib.h possono essere classificate nelle seguenti categorie: conversione tra tipi, gestione della memoria, controllo dei processi, ricerca ed ordinamento, matematica semplice.
+
+Nome	Descrizione
+Conversione tra tipi
+atof	Converte una stringa in un numero in virgola mobile. Equivalente a strtod(s, (char**)NULL).
+atoi	Converte una stringa in un numero intero. Equivalente a (int)strtol(s, (char**)NULL, 10).
+atol	Converte una stringa in un numero intero lungo (long int). Equivalente a strtol(s, (char**)NULL, 10).
+strtod	Converte una stringa in un double (numero a virgola mobile), effettuando dei controlli sull'overflow e restituendo anche l'eventuale parte non convertita della stringa.
+strtol	Converte una stringa, che rappresenta un numero in una base arbitraria compresa tra 2 e 36, in un double (numero a virgola mobile), effettuando dei controlli sull'overflow e restituendo anche l'eventuale parte non convertita della stringa.
+strtoul	Equivalente a strtol() tranne per il tipo del risultato, che è unsigned long.
+Generazione di numeri pseudocasuali
+rand	Restituisce un numero intero pseudocasuale compreso tra 0 e RAND_MAX.
+srand	Inizializza il seme per la sequenza di numeri pseudocasuali della funzione rand().
+Allocazione e deallocazione di memoria
+calloc, malloc, realloc	Funzioni che si occupano dell'allocazione dinamica della memoria.
+free	Libera la memoria allocata dinamicamente dalla famiglia di funzioni malloc().
+Controllo dei processi
+abort	Causa la terminazione immediata ed anormale del programma, come se fosse stato invocato raise(SIGABRT).
+atexit	Registra una funzione, della quale le viene passato il puntatore, affinché venga eseguita appena prima della normale terminazione del programma.
+exit	Causa la normale terminazione del programma. Tutte le funzioni registrate con atexit() vengono eseguite con ordine inverso rispetto alla loro registrazione, gli stream associati al programma vengono liberati, i file vengono scritti su disco (vedere flush()) ed il controllo viene restituito all'ambiente chiamante, assieme ad un valore numerico, che generalmente indica lo stato del programma o la causa della sua terminazione, che deve essere fornito alla funzione stessa.
+getenv	Restituisce la stringa che nell'ambiente di lavoro del programma è associata al nome fornito, oppure NULL se non esiste alcuna stringa. I dettagli della funzione sono strettamente dipendenti dal sistema operativo. Vedere anche variabile d'ambiente.
+system	Passa la stringa fornitale all'ambiente di lavoro per l'esecuzione e restituisce il codice d'uscita del comando invocato. Se si fornisce NULL, informa sulla eventuale presenza nel sistema di un processore di comandi.
+Ricerca ed ordinamento
+bsearch	Implementa in maniera generica l'algoritmo di ricerca dicotomica.
+qsort	Implementa in maniera generica l'algoritmo di ordinamento quicksort.
+Matematica semplice - presenti anche in math.h
+abs, labs	Calcola il valore assoluto dell'argomento.
+div, ldiv	Calcola il quoziente ed il resto della divisione intera tra il dividendo ed il divisore forniti.
+Costanti[modifica | modifica wikitesto]
+Le costanti definite in stdlib.h includono:
+
+Nome	Valore	Descrizione
+NULL	Generalmente viene definita come 0, oppure 0L, oppure (void*)0	Una macro che espande nella costante puntatore nullo; in altre parole, una costante che rappresenta un valore che è garantito essere l'indirizzo di una posizione non valida nella memoria.
+EXIT_FAILURE	È garantita essere un valore diverso da 0	Indica una terminazione non corretta del programma: viene generalmente utilizzata assieme alla funzione exit().
+EXIT_SUCCESS	0	Indica una terminazione corretta del programma: viene generalmente utilizzata assieme alla funzione exit().
+RAND_MAX	>= 32767	Massimo valore restituibile dalla funzione rand().
+
+Tipi di dato
+
+I tipi di dato definiti in stdlib.h sono:
+
+Nome	Descrizione
+size_t	Un tipo intero che è il tipo del valore restituito dall'operatore sizeof.
+div_t e ldiv_t	Una struttura contenente le informazioni restituite dalle funzioni div e ldiv.
+Voci correlate
+
+stdio.h
+Libreria standard del C
+malloc

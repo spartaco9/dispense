@@ -1,0 +1,111 @@
+
+                                    stdio.h
+
+
+stdio.h, che sta per "standard input-output header", è l'header file della libreria standard del C che contiene definizioni di macro, costanti e dichiarazioni di funzioni e tipi usati per le varie operazioni di input/output. È compatibile con il C++, anche se quest'ultimo linguaggio di programmazione usa anche l'header file cstdio, che aggiunge alcune funzioni sovraccariche per lavorare anche con le variabili long.
+
+Le funzioni dichiarate in stdio.h sono molto famose, poiché, essendo parte della libreria standard del C, il loro funzionamento è garantito su ogni piattaforma per la quale esista un compilatore C. Le applicazioni studiate per una particolare piattaforma, però, potrebbero utilizzare direttamente le chiamate di I/O del sistema operativo, piuttosto che le funzioni di stdio.h.
+
+
+Indice
+
+
+1	Esempio di utilizzo
+2	Funzioni
+3	Costanti
+4	Variabili
+5	Tipi di dato
+6	Altri progetti
+7	Collegamenti esterni
+Esempio di utilizzo[modifica | modifica wikitesto]
+Tutte le funzioni, in C e nei suoi derivati, sono dichiarate negli header file. Il programmatore, perciò, deve includere l'header stdio.h nel codice sorgente per poter utilizzare le funzioni dichiarate al suo interno.
+
+#include <stdio.h>
+
+int main(void)
+{
+  int c;
+
+  while ((c = getchar()) != EOF)
+    putchar(c);
+  putchar('\n');
+
+  return 0;
+}
+Il programma qui sopra legge tutto l'input dallo standard input e lo visualizza sullo standard output, carattere per carattere.
+
+Funzioni[modifica | modifica wikitesto]
+Le funzioni dichiarate in stdio.h possono generalmente essere divise in due categorie: le funzioni per la manipolazione di file e quelle per la manipolazione dell'input/output.
+
+Nome	Descrizione
+Funzioni per la manipolazione di file
+fclose	Chiude il file associato al valore FILE * passatole.
+fopen, freopen, fdopen*	Apre un file in lettura o scrittura.
+remove	Rimuove un file.
+rename	Rinomina un file.
+rewind	Agisce come se fosse stata chiamata la funzione fseek(stream, 0L, SEEK_SET) sullo stream passatole; in aggiunta, cancella il suo indicatore d'errore.
+tmpfile	Crea ed apre un file temporaneo, che viene poi cancellato e chiuso con fclose().
+Funzioni per la manipolazione dell'input/output
+clearerr	Cancella l'indicatore di fine file e quello d'errore per un dato stream.
+feof	Controlla se l'indicatore di fine file è stato settato per un dato stream.
+ferror	Controlla se l'indicatore d'errore è stato settato per un dato stream.
+fflush	Forza lo svuotamento del buffer output per un dato stream, provocando l'immediata scrittura su file.
+fgetpos	Salva la posizione corrente associata allo stream passato come primo argomento (un FILE *) nel secondo argomento passatole (un fpos_t *).
+fgetc	Restituisce un carattere da un file.
+fgets	Restituisce una stringa presa da un file, terminata da un carattere di nuova riga ('\n') o dal carattere nullo ('\0').
+fputc	Scrive un carattere su un file.
+fputs	Scrive una stringa su un file.
+ftell	Restituisce un indicatore di posizione sul file che può essere passato alla funzione fseek().
+fseek	Si sposta attraverso un file.
+fsetpos	Imposta l'indicatore di posizionamento del file di uno stream associato al primo argomento (un FILE *) come memorizzato nel suo secondo argomento (un fpos_t *).
+fread	Legge da file dei dati di diverse dimensioni.
+fwrite	Scrive su file dei dati di diverse dimensioni.
+getc	Legge e restituisce un carattere dallo stream passatole ed incrementa l'indicatore di posizionamento nel file; è possibile che venga implementato come macro con gli stessi effetti di fgetc(), tranne che potrebbe agire sullo stream più di una volta.
+ungetc	Restituisce allo stream almeno un carattere. Alla successiva chiamata di getc verrà passato il carattere restituito da ungetc
+getchar	Ha gli stessi effetti di getc(stdin).
+gets	Legge caratteri da stdin finché non incontra un carattere di nuova riga (newline) o un EOF e salva il risultato nell'argomento passatole (char *).
+printf, fprintf, sprintf, snprintf	Utilizzato per stampare vari tipi di dato su stdout.
+vprintf	Anch'essa utilizzata per stampare su stdout.
+perror	Scrive un messaggio di errore su stderr.
+un carattere in uno stream di input.
+
+puts	Scrive una stringa su stdout.
+Note
+* Non parte dello standard ISO.
+Costanti[modifica | modifica wikitesto]
+Le costanti definite in stdio.h includono:
+
+Nome	Valore	Descrizione
+EOF		Un numero intero negativo di tipo int usato per indicare la condizione di raggiunto fine file.
+BUFSIZ		Un intero indicante la dimensione del buffer usato dalla funzione setbuf().
+FILENAME_MAX		La dimensione di un array di char grande abbastanza da contenere il nome di un qualsiasi file gestibile su una particolare architettura.
+FOPEN_MAX	>= 8	Il numero massimo di file che possono essere aperti contemporaneamente.
+_IOFBF		Abbreviazione di "I/O fully buffered", cioè "I/O completamente bufferizzato"; è un intero che può essere passato alla funzione setvbuf() per richiedere che uno stream sia bufferizzato a blocchi.
+_IOLBF		Abbreviazione di "I/O line buffered", cioè "I/O bufferizzato per linee"; è un intero che può essere passato alla funzione setvbuf() per richiedere che uno stream sia bufferizzato per linee.
+_IONBF		Abbreviazione di "I/O not buffered", cioè "I/O non bufferizzato"; è un intero che può essere passato alla funzione setvbuf() per richiedere che uno stream non sia bufferizzato.
+L_tmpnam		La dimensione di un array di char grande abbastanza per conservare il nome di file temporaneo generato dalla funzione tmpnam().
+NULL	Generalmente viene definito come 0, oppure 0L, oppure (void*)0	Una macro che espande nella costante puntatore nullo; in altre parole, una costante che rappresenta un valore che è garantito essere l'indirizzo di una posizione non valida nella memoria.
+SEEK_CUR		Un intero che può essere passato alla funzione fseek() per richiedere un posizionamento relativo rispetto alla posizione attuale nel file.
+SEEK_END		Un intero che può essere passato alla funzione fseek() per richiedere il posizionamento alla fine del file.
+SEEK_SET		Un intero che può essere passato alla funzione fseek() per richiedere il posizionamento all'inizio del file.
+TMP_MAX	>= 25	Il massimo numero di nomi di file unici generabili dalla funzione tmpnam().
+
+Variabili
+
+Le variabili definite in stdio.h includono:
+
+Nome	Descrizione
+stdin	Un puntatore a FILE che si riferisce allo stream di standard input, generalmente la tastiera.
+stdout	Un puntatore a FILE che si riferisce allo stream di standard output, generalmente un terminale.
+stderr	Un puntatore a FILE che si riferisce allo stream di standard error, generalmente un terminale.
+Tipi di dato[modifica | modifica wikitesto]
+I tipi di dato definiti in stdio.h sono:
+
+Nome	Descrizione
+FILE	Una struttura contenente le informazioni su un file (od in genere uno stream), necessarie per eseguire su di esso le operazioni di input/output, come ad esempio:
+la posizione attuale nello stream
+un indicatore di fine file
+un indicatore d'errore
+un puntatore al buffer dello stream, se applicabile
+fpos_t	Un tipo scalare capace di identificare univocamente la posizione di ogni byte in un file.
+size_t	Un tipo intero che è il tipo del valore restituito dall'operatore sizeof.
