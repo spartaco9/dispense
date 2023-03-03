@@ -1,0 +1,335 @@
+
+https://www.makeuseof.com/use-autokey-to-automate-repetitive-tasks-on-linux/
+
+ ---------------------------------------------------------------------------
+
+
+
+
+
+        ow to Use AutoKey to Automate Repetitive Tasks on Linux
+
+
+
+
+
+By Yash Wate
+Published Jul 25, 2021
+
+Play smart and set up phrases and scripts with AutoKey to automate basic tasks
+on a Linux machine.
+
+
+
+Readers like you help support MUO. When you make a purchase using links on our
+site, we may earn an affiliate commission. Read More.
+
+AutoKey is a scripting application for Linux. It lets you automate repetitive
+and trivial operations on your computer so you can perform them quickly and
+efficiently.
+
+Some of the tasks where AutoKey serves well include text expansion, correcting
+typos, launching programs, and inserting boilerplate texts. Besides, you can
+also use it to run custom scripts to automate complex system actions on your
+machine.
+
+That said, though, AutoKey can be intimidating to its first-time users. To this
+end, here's a guide to help you install, set up, and use AutoKey on Linux.
+
+What Is AutoKey?
+
+AutoKey is a free and open-source desktop automation utility for Linux. It
+allows you to automate various repetitive operations on your computer using
+hotkeys or trigger phrases so you can perform them efficiently.
+
+If you're just starting with AutoKey, text expansion and auto-correction are
+two applications where the software can prove to be of good use to you. And
+over time, as you get comfortable with AutoKey and develop an understanding of
+scripting concepts and their intricacies, you should be able to use it to
+execute Python scripts to automate complex tasks.
+
+How to Install AutoKey on Linux
+
+AutoKey is available for all major Linux distros and comes in two versions:
+autokey-gtk and autokey-qt.
+
+For the uninitiated, GTK and Qt are toolkits used for developing GUI-based apps
+for Linux. Of the two, GTK is the preferred choice for GNOME-style programs,
+while Qt is the standard option for creating programs for KDE. Besides the
+change in cosmetics, though, the programs created with GTK and Qt both share
+the same internal structure at large.
+
+So, depending on which Linux distro you're using on your computer, you can
+decide to download either the GTK or the Qt version of AutoKey.
+
+Related: What's the Difference Between GTK+ and Qt
+
+For this, too, you have two options. You can either use the package manager,
+which comes pre-installed in your Linux distro, for a quick installation. Or,
+you can use pip, in case you want the latest version of AutoKey.
+
+However, the recommended choice is to install AutoKey using a package manager
+since it offers a much easier and friendly installation process than pip.
+Follow the steps below to install AutoKey on your computer.
+
+On Debian (Ubuntu, Mint, Elementary)
+
+To install AutoKey on Debian-based Linux distributions, run the following
+command in the terminal:
+
+ sudo apt install autokey-gtk
+
+For installing autokey-qt, enter:
+
+ sudo apt install autokey-qt
+
+On Fedora
+
+Install AutoKey on Fedora using:
+
+ sudo dnf install autokey-gtk
+
+On Arch Linux
+
+AutoKey is available on Arch Linux via AUR (Arch User Repository). So you can
+install it by running:
+
+ yay -Syy autokey-gtk
+
+AutoKey Initial Run
+
+With AutoKey installed, go to the application menu and launch the program. When
+it opens, the system will greet you with the main window that's split into two
+sections: the left pane helps you navigate through phrases and scripts, whereas
+the right allows you to preview and build/configure the items you select on the
+left.
+
+AutoKey comes with a few sample phrases and scripts out of the box to give you
+an idea of their usage. Phrases are essentially text expanders that enter text
+on your behalf when you enter their trigger keys or phrases. On the other hand,
+scripts are dynamic and can be programmed using Python to perform more advanced
+operations.
+
+We'll show you how to use them in the following sections. But before that, make
+sure to set AutoKey to run automatically every time you log in to your
+computer, so you don't have to run the app manually every time.
+
+To do this, go to Edit > Preferences. Switch to the General tab and check the
+box for Automatically start AutoKey at Login. Click on OK to save the changes.
+
+How to Use AutoKey Phrases
+
+As mentioned above, there are various use-cases where you can use AutoKey
+phrases. Now, to show AutoKey phrases in action, let's see how you can set up
+an abbreviation to expand text/phrase.
+
+ 1. Click on the New button and select Phrase.
+
+ 2. Give a name to the phrase and hit OK.
+ 3. On the right window, click on Enter phrase contents and replace it with the
+    text you want to enter when you type its abbreviation.
+ 4. Click on the Set button beside Abbreviations.
+
+ 5. Tap on Add in the Set Abbreviations window and enter the abbreviation with
+    which you want to expand the phrase.
+ 6. Hit the dropdown button for Trigger on and select All non-word.
+
+ 7. Hit OK.
+ 8. In the main window, tap on the Save button.
+
+To ignore the case of typed abbreviation, tick the checkbox next to Ignore case
+of typed abbreviation. Similarly, to avoid the need to press a trigger
+character, enable the Trigger immediately (don't require a trigger character)
+option.
+
+If you’re into software development and want to use certain Python libraries in
+your project, you can create a phrase for the same that enters those libraries
+into the editor when you type it in.
+
+Moreover, in case you've amassed a lot of such phrases—to a point where it's
+hard to remember them—you can assign a hotkey to view a list of all these
+phrases and choose one to enter into the text field.
+
+Follow the steps below to do this:
+
+ 1. Hit the New button to create a new folder.
+
+ 2. Move all the phrases you want to group together to this folder.
+ 3. Select the folder, and in the Folder Settings on the right, click the Set
+    button beside Hotkey.
+
+ 4. Choose a modifier key, select Press to Set, and enter a key to generate a
+    key combination. Hit OK and save the changes.
+
+Now, all you need to do is hit the hotkey to view all the phrases in the folder
+and select the one you want to use.
+
+How to Use AutoKey Scripts
+
+AutoKey scripts come into play when you want to perform more advanced
+operations than just text expansion. Using a script, you can run apps, open
+files/folders, and control window and mouse events, among other things.
+
+For the purpose of this guide, let's see how you can use an AutoKey script to
+open Google Chrome.
+
+ 1. Click on the New button and select Script.
+
+ 2. Give a name to your script and hit OK.
+ 3. On the right window, replace # Enter your script code with the following
+    lines of code:
+
+     import subprocess
+    subprocess.Popen(["usr/bin/google-chrome"])
+
+
+ 4. Hit the Set button next to Hotkey and set a hotkey.
+
+ 5. Click OK.
+
+ 6. Tap on Save to save your script.
+
+Now, every time you want to run Chrome, hit this hotkey, and it'll execute the
+script and launch Chrome.
+
+In the same way that you grouped similar phrases into a folder in the previous
+section, you can also group similar scripts to run them easily as needed.
+
+To use scripts effectively, you need to have a working understanding of Python.
+Like, for instance, we've used the subprocess module (subprocess management)
+to open a new process in the example above. You can learn more about the
+subprocess and other modules and components using Python's official documents.
+
+Related: What Is Python's OS Module and How Do You Use It?
+
+Once mastered, you can leverage your Python skills to interact with pretty much
+any component of the system and perform tasks at lower levels that would
+consume a lot of your time if you chose to go the manual route.
+
+Get More Done With AutoKey
+
+The guide above should've helped you set up AutoKey on your computer and
+understand the basic idea behind its working. And going forward, you should be
+able to take inspiration from the demonstrated examples above and use AutoKey
+phrases and scripts to automate the repetitive and trivial operations on your
+system.
+
+If you'd like to explore more options, check out some of the other popular
+Linux automation apps before investing in one.
+
+Subscribe to our newsletter
+Comments
+Share Tweet Share Share Share
+Copy
+Email
+Share
+Share Tweet Share Share Share
+Copy
+Email
+Link copied to clipboard
+Related Topics
+
+  • Linux
+  • Computer Automation
+  • Task Automation
+  • Linux Apps
+
+About The Author
+Yash Wate (79 Articles Published)
+   
+
+Yash is a Staff Writer at MUO for DIY, Linux, and Security. Before finding his
+passion in writing, he used to develop for the web and iOS. You can also find
+his writing on TechPP, where he covers other verticals.
+
+Close
+
+Poll
+
+Do you prefer to call, text, or video call your friends?
+
+( )
+Call
+30%, 1387 votes
+( )
+Text
+57%, 2626 votes
+( )
+Video call
+13%, 612 votes
+Total Votes: 4625
+Vote View results Discuss this poll
+
+  • New Year
+
+  • Online Shopping
+
+ 
+
+8 Month-Long Online Fitness Challenges to Start the New Year Strong
+
+1 day ago
+
+ 
+
+8 New Year’s Resolutions That Focus on Improving Your Overall Wellness
+
+2 days ago
+
+ 
+
+Avoid Toxic New Year Diet Culture With These 5 Self-Improvement and
+Body-Neutral Apps
+
+3 days ago
+See More
+
+ 
+
+How Does Back Market Work, and Is It Legit?
+
+6 hours ago
+
+ 
+
+Is Trip.com a Legitimate Travel Business?
+
+2 days ago
+
+ 
+
+5 Ways to Save on Your Online Christmas Shopping
+
+Dec 19, 2022
+See More
+
+Trending Now
+
+ 
+
+How to Create a Compound Interest Calculator in Excel
+
+ 
+
+How to Write a Company Profile (Plus Samples and Templates to Aid You)
+
+ 
+
+How to Take Screenshots on Android When the App Doesn't Allow It
+
+  • Write For Us
+  • Home
+  • Contact Us
+  • Terms
+  • Privacy
+  • Copyright
+  • About Us
+  • Fact Checking Policy
+  • Corrections Policy
+  • Ethics Policy
+  • Ownership Policy
+  • Partnership Disclaimer
+  • Official Giveaway Rules
+
+Copyright © 2022 www.makeuseof.com
+ 
