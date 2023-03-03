@@ -1,0 +1,7 @@
+
+
+Questi due termini riguardano la gestione della memoria. Lo stack e lo heap sono astrazioni che aiutano a determinare quando allocare e deallocare memoria.
+
+Ecco un confronto ad alto livello:
+
+Lo stack è molto veloce, ed è dove la memoria è allocata di default in Rust. Ma l'allocazione è locale a una chiamata di funzione, ed è di dimensione limitata. Lo heap, d'altro canto, è più lento, ed è esplicitamente allocato dal programma. Ma è di dimensione illimitata, ed è accessibile a tutto il programma.

@@ -1,0 +1,4 @@
+
+DA Prompt dei comandi per gli sviluppatori per VS 2017 (VISUAL STUDIO), USARE LA SEGUENTE SINTASSI :
+
+# - cl file.c
