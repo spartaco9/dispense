@@ -1,0 +1,5 @@
+struct nodo                // Il nome della struttura
+
+  int data               //  L' Informazione di tipo intero
+
+    struct nodo *next  //    Il puntatore che punta al nodo successivo

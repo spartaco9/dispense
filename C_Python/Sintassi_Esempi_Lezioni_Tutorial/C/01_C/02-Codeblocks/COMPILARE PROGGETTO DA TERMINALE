@@ -1,0 +1,24 @@
+
+
+                COMPILARE UN PROGGETTO DA TERMINALE SENZA CODEBLOCKS (PROGRAMMA IDE)
+
+
+Creare 3 File Diversi Dei Quali 2 .c Ed 1 .h :
+
+1 main.c L' Altro Il Nome Della Funzione Che Si Crea .c 
+E Il Terzo Il nome Della Funzione .h (Header)
+
+Esempio :
+
+  gcc main.c NomeFunzione.c
+
+Dopo Di Che Ce Li Compilera' Mischiandoli Insieme In Un Unico File Compilato Che Linux Chiamera' :
+
+a.out
+
+Eseguire Il File a.out Nel Modo Seguente :
+
+./a.out
+
+
+                                         FINE

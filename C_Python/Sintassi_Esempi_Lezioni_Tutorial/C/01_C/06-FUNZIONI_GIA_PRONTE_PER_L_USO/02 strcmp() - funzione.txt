@@ -1,0 +1,32 @@
+                              STRCMP() - FUNZIONE
+
+
+
+int strcmp(const char *s1, const char *s2);
+
+Confronta la stringa s1 con s2.
+
+Viene utilizzata per effettuare il confronto lessicografico tra le stringhe, restituisce un valore 1 viceversa. Restituisce 0 se le due stringhe sono uguali.
+
+Esempio:
+
+
+
+char str1[]="A", str2[]="B";
+int res;
+
+res=strcmp(str1, str2);
+
+printf("%d", res);
+
+
+
+
+if(strcmp(string1, string2) == 0)
+   printf("\n\n\n          ENTRAMBE LE STRINGHE SONO UGUALI : %d\n", res);
+else
+   printf("\n\n\n          LE DUE STRINGHE SONO DIVERSE :\n", res);
+if(strcmp(string1, string2) < 0)
+   printf("\n\n\n    Le Stringa_1 E' Minore Della Stringa_2 : %d\n", res);
+else if(strcmp(string1, string2) > 0)
+   printf("\n\n\n    Le Stringa_1 E' Maggiore Della Stringa_2 : +%d\n", res);

@@ -1,0 +1,13 @@
+
+
+se il file .c si salva su desktop, andare da terminale su desktop con il cmd :
+
+" cd Scrivania "
+
+dopo di che digitare :
+
+" gcc NomeFile.c -o NomeFile "
+
+esempio :
+
+   " gcc file.c -o file "

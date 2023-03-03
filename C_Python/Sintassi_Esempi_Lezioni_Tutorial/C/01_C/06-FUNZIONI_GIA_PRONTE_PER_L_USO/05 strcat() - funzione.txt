@@ -1,0 +1,18 @@
+                             STRCAT() - FUNZIONE
+
+
+char *strcat(char *dest, const char *src);
+
+Concatena src alla stringa dest. A differenza di quanto avviene con altri linguaggi non viene restituita una nuova stringa contenete la concatenazione delle due, ma la destinazione viene effettivamente modificata.
+
+Attenzione: la stringa deve quindi avere spazio vuoto a sufficienza per contenere la seconda stringa.
+
+Esempio:
+
+
+
+char string1[20] = "Hello, ";
+char string2[] = " world!";
+ 
+strcat(string1, string2);
+printf("%s\n", string1);

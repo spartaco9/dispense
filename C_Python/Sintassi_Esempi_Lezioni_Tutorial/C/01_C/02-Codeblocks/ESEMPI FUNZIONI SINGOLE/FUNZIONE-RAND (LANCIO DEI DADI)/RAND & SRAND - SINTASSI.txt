@@ -1,0 +1,103 @@
+#include <stdlib.h>
+#include <time.h>
+
+i = rand() % 100 + 1;
+
+Esempio Sintassi :
+
+srand (time(NULL));
+printf("E' Il Numero...", (rand() % 100 + 1));
+
+rand(time();
+
+srand(time();
+
+----------------------------------------------------
+
+Per la redazione di questo articolo, ho preso spunto da una discussione intavolata nel forum di questo sito, in cui ho risposto ad alcune domande su come si generano numeri casuali in C.
+
+Problema:
+    Come faccio a generare un numero casuale compreso tra 1 e 100?
+    Perché il programma mi genera sempre gli stessi numeri?
+    Qual è il significato di random e randomize?
+
+
+Per generare un numero casuale, bisogna richiamare la funzione rand, dichiarata in stdlib.h (cioè bisogna scrivere #include <stdlib.h>).
+Per assegnare a una variabile (i) un numero casuale da 1 a 100 con rand bisogna scrivere:
+
+i = rand() % 100 + 1;
+
+in questo modo viene generato un numero casuale compreso tra 0 e RAND_MAX (una costante, che secondo l’ANSI C – un protocollo per gli standard di C – deve essere maggiore o uguale di 32767); il simbolo % rappresenta l’operatore modulo, che fornisce il resto della divisione tra il valore di ritorno di rand e il fattore di scala (in questo caso, 100). Dunque, il risultato sarà compreso tra 0 e 99, e aumentato di un’unità per ottenere un numero casuale compreso tra 1 e 100.
+Ma non è finita: prima di richiamare la funzione rand, è opportuno richiamare la funzione di randomizzazione srand (dichiarata in stdlib.h), che accetta come argomento un seme (del tipo unsigned int), che “insemina” la funzione rand, in modo da indurla a generare una diversa sequenza di numeri casuali ad ogni esecuzione del programma, a patto che sia fornito ogni volta un seme diverso.
+Come ovviare però a questo ultimo inconveniente?
+Si può fornire come argomento a srand l’orario in quell’istante, letto dall’orologio interno del computer da parte della funzione time, dichiarata in time.h.
+Dunque, il frammento del programma di cui ci stiamo occupando sarà il seguente:
+#include <stdlib.h>
+#include <time.h>
+…
+int i;
+…
+srand(time(NULL));
+i = rand() % 100 + 1;
+…
+
+
+Alcuni programmatori preferiscono usare random e randomize: si tratta di macro, dichiarate in stdlib.h, che sostituiscono, rispettivamente, rand e srand. Mi spiego meglio: il preprocessore, ad ogni occorrenza di random(x) sostituisce rand() % x (con x intendo un nome generico di variabile) e lo stesso con randomize.
+Ma bisogna precisare che non tutti i compilatori C sono uguali e, talvolta, le macro random e randomize non sono dichiarate e quindi riconosciute.
+Certamente, la funzione rand causa meno problemi di portabilità, ma il suo utilizzo può apparire macchinoso. In questo caso, vi consiglio di dichiarare voi stessi le macro, in questo modo:
+#define random(x) rand() % x
+#define randomize srand((unsigned)time(NULL))
+
+E in questo modo, il programma apparirà come segue:
+#include <stdlib.h>
+#include <time.h>
+#define random(x) rand() % x
+#define randomize srand((unsigned)time(NULL))
+…
+int i;
+…
+randomize;
+vet = random(100) + 1;
+…
+
+
+CONLUDENDO, possiamo dire che:
+1. rand è la funzione per generare numeri casuali;
+2. srand è la funzione di randomizzazione;
+3. se rand genera sempre lo stesso numero, allora vi siete dimenticati di richiamare srand;
+4. se il compilatore non riconosce le funzioni rand e srand e/o la funzione time, allora vi siete dimenticati di includere stdlib.h e/o time.h;
+5. l’utilizzo di random e randomize può rendere il programma meno portabile (in quanto non riconosciuti da tutti i compilatori C);
+6. in tal caso, e se vi trovate bene con random e randomize (che ricordano lo stile “colloquiale” del Pascal), potete benissimo dichiarare voi stessi le macro;
+
+Spero di essere stato sufficientemente chiaro. Se vi può essere utile, nella sezione programmi – C/C++ ho inserito un programma che utilizza queste funzioni.
+Ciao a tutti e grazie per la cortese attenzione.
+condividi su Twitter 
+A proposito dell'autore
+
+ Zizzius
+Descrizione non disponibile. Questo membro non è più parte della Community.
+
+Aggiungi un commento
+
+Inserisci il tuo commento qui
+Esegui il login oppure registrati per inviare commenti
+17:08 - 01/08/12 minnie
+Una curiosità... ma se volessi generare tra i vari numeri pseudo-casuali anche lo zero come dovrei fare??
+Rispondi
+11:13 - 25/05/10 Ultimo
+Grazie
+Rispondi
+21:50 - 13/02/10 fsfilippo
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Rispondi
+21:50 - 13/02/10 fsfilippo
+bravo !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Rispondi
+  
+
+Creative Commons License
+Il layout di questo sito è concesso sotto licenza Creative Commons.
+Per informazioni sui contenuti visita la pagina delle licenze.
+
+Sito gestito da MasseranoLabs LLC. Leggi l'informativa sui cookies.
+Big-Bug.net ~ Programmazione ~ thetotalsite.it ~ Piero's Blog ~ Giochi ~ Altri... ~ Il tuo sito qui?

@@ -1,0 +1,24 @@
+                                  strcpy :
+
+char *strcpy(char *s1, const char *s2);
+
+Copia la stringa s1 nella stringa s2, incluso il carattere di terminazione .
+
+Può essere utilizzato per modificare il valore di una stringa dopo la sua dichiarazione, come in questo esempio:
+
+Esempio:
+
+char string1[] = "Hello, world!";
+char string2[20];
+strcpy(string2, string1);
+
+--------------------------------------------------------------------------------
+
+combinazione numerica :
+
+string1
+string2
+
+strcpy - string2, string1
+
+1 - 2 .. 2 - 1

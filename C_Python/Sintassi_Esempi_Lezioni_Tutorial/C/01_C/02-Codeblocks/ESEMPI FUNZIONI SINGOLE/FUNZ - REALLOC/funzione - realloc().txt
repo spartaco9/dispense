@@ -1,0 +1,26 @@
+
+
+                                   FUNZIONE REALLOC()
+
+
+Esempio Generico :
+
+array = (nodo *) realloc(array, allocati);
+
+---------------------------------------------------------------------------------------------
+
+Esempio Specifico :
+
+NomePtrNodo=(nodo *)realloc(NomePtrNodo, NumeriByteDaAllocare);
+
+---------------------------------------------------------------------------------------------
+
+Esempi Piu Chiari Ancora :
+
+testaA=(nodo *)realloc(testaA, 50);
+testaB=(nodo *)realloc(testaB, 50);
+
+---------------------------------------------------------------------------------------------
+
+  /* testaA E' Un Puntatore A Nodo Che Moltiplicato Per Molti Puntatori A Nodo 
+     Formano Una Lista.                                                                   */

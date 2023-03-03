@@ -1,0 +1,5 @@
+prodotti venduti x percentuale / tasso percento + stipendio fisso = risultato
+
+esempio :
+
+5000 * 9 / 100 + 200 = 650

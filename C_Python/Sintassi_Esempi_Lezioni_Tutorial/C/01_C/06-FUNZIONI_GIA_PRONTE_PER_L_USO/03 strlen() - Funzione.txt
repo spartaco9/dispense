@@ -1,0 +1,61 @@
+                             STRLEN() - FUNZIONE
+
+
+                                  PROCEDURA
+
+
+char stringa[] = "stringa di caratteri";
+int i = strlen(stringa);
+
+printf("\n\n          La Lunghezza Della Stringa E' Di %d Caratteri ", i);
+
+--------------------------------------------------------------------------------
+
+
+PROCEDURA IN BREVE :
+
+Creiamo Vettore Char Stringa + Caratteri, Creiamo Contatore int i = strlen(NomeVettore), printf %d
+
+--------------------------------------------------------------------------------
+
+PSEUDOCODICE :
+
+1) Dichiariamo Un Vettore Di Stringa Di Caratteri Chiamato Come Vogliamo In    Questo Caso "Stringa".
+
+2) Dichiariamo Una Variabile Di Tipo Intero Come Contatore E Le Assegnamo Il    Valore Della Funzione strlen In Cui Inseriamo Il Vettore Di Stringa Che    Abbiamo Precedentemente Dichiarato All' Inizio Di Tipo Char.
+
+--------------------------------------------------------------------------------
+
+
+                                   RIEPILOGO 
+ 
+Linguaggio C - strlen()
+
+NOME
+
+strlen() - calcola la lunghezza di una stringa
+SINOPSI
+
+
+#include <string.h>
+
+size_t strlen(const char *s);
+    
+DESCRIZIONE
+
+La funzione strlen() calcola la lunghezza della stringa s, (inteso come il numero di caratteri dell'array puntato da s) escluso il terminatore '\0'.
+VALORE DI RITORNO
+
+La funzione strlen() ritorna il numero di caratteri in s.
+CONFORME A
+
+SVID 3, POSIX, BSD 4.3, ISO 9899
+VEDI ANCHE
+
+strcpy(), strncpy() strcat(), strncat() strcmp(), strncmp()
+ Indice-C Indice linguaggio C
+ Indice librerie Indice librerie C
+ At Home Umberto Zappi Home Page
+ Indice funzioni Indice funzioni C
+Realizzato da Umberto Zappi (e-mail: e-mail to uzappi@inwind.ituzappi@inwind.it) 
+Data ultimo aggiornamento: 10/13/2000 23:29:07

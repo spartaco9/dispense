@@ -1,0 +1,2 @@
+https://it.wikipedia.org/wiki/Libreria_standard_del_C
+http://www.science.unitn.it/~fiorella/guidac/guidac112.html

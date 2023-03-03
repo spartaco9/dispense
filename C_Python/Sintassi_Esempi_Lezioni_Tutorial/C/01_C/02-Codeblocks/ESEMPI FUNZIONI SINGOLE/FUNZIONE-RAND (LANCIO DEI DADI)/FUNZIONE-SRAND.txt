@@ -1,0 +1,1 @@
+La funzione srand serve a inizializzare la funzione per la generazione dei numeri casuali. Senza di esso allo stesso seed(seme) il programma estrarrebbe sempre gli stessi numeri casuali. Per evitare ciò un metodo per rendere casuale il seme è quello di impostarlo con time(0) o anche time(NULL) tramite la funzione che si trova nella libreria time.

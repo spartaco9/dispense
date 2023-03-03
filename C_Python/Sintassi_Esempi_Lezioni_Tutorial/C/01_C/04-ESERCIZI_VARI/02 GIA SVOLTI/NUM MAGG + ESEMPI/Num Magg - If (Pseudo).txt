@@ -1,0 +1,9 @@
+Se ogni qualvolta che la variabile "numero" sarà maggiore
+Alla variabile "maggiore", che inizialmente varrà 0 e che registrerà
+Il valore della variabile "numero" ad ogni giro di ciclo
+(Perche c e' il while) e successivamente si ripeterà
+Per  ogni giro del ciclo, registrando cosi il valore
+Del numero maggiore rispetto a quello del numero precedente,
+Assegna alla variabile "maggiore" il valore di "numero"
+Per ogni giro di ciclo fino a che non avrete registrato il valore
+Piu grande di tutti e quindi sara' effettivamente quello maggiore.

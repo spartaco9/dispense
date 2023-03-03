@@ -1,0 +1,7 @@
+
+#ifndef INTRECCIALISTE_H_INCLUDED
+#define INTRECCIALISTE_H_INCLUDED
+
+#include "IntrecciaListe.h"
+
+#endif // INTRECCIALISTE_H_INCLUDED

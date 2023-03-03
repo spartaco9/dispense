@@ -1,0 +1,23 @@
+
+https://github.com/openframeworks/openFrameworks/issues/2553
+
+----------------------------------------------------------------------
+
+
+
+                        Code completion not working on codeblocks #2553
+
+
+[ENG]
+
+Code completion not set up by default in the OF workspace.
+
+To get autocomplete working again, go to Settings->Editor->Code Completion->C/C++ Parser and select "Use one parser for the whole workspace"
+
+This should then be saved in the OF workspace.
+
+----------------------------------------------------------------------
+
+[ITA]
+
+Completamento del codice non impostato per impostazione predefinita nell'area di lavoro OF. Per far funzionare nuovamente il completamento automatico, vai in Impostazioni-> Editor-> Completamento codice-> Parser C / C ++ e seleziona "Usa un parser per l'intero spazio di lavoro". Dovresti quindi salvarlo nell'area di lavoro OF.
