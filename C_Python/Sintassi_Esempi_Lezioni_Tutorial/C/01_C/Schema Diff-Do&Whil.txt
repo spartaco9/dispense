@@ -1,0 +1,7 @@
+while(condizione)
+   {istruzione/i}
+
+
+do
+   {istruzione/i}
+while(condizione)

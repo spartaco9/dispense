@@ -1,0 +1,173 @@
+strlen = è una funzione che ci dice la lunghezza della stringa, cioè quanti               caratteri ha la stringa
+
+
+
+strcpy = cpy significa copy ed è la funzione che permette di copiare una stringa          in un altra
+
+
+
+strcat = è la funzione di libreria standard del linguaggio di programmazione C            che ci permette di concatenare una stringa ad un altra.
+
+            Esempio : 
+
+                      (('stringa')+('stringa'))
+
+strcamp = è la funzione che permette di confrontare due stringhe se identiche,             minori o maggiori tra loro.
+
+
+--------------------------------------------------------------------------------
+
+Errori comuni
+
+Ci sono alcuni errori che è facile commettere lavorando con le stringhe in C e che risultano essere piuttosto insidiosi poiché non vengono rilevati dal compilatore… senza nessuna pretesa di completezza eccone alcuni:
+
+Errore 1
+
+
+char variabile[4] = "ciao";
+
+char variabile[4] = "ciao";
+Questo codice è errato perché non alloca lo spazio necessario per il terminatore di stringa, con un risultato imprevedibile.
+
+Soluzione:
+
+
+char variabile[5] = "ciao";
+
+char variabile[5] = "ciao";
+Errore 2
+
+
+char variabile1[5] = "ciao";
+char *variabile2;
+
+variabile2 = variabile1;
+
+printf("indirizzo: %x ",variabile1);
+printf("indirizzo: %x ",variabile2);
+
+
+char variabile1[5] = "ciao";
+char *variabile2;
+ 
+variabile2 = variabile1;
+ 
+printf("indirizzo: %x ",variabile1);
+printf("indirizzo: %x ",variabile2);
+Questo non è propriamente un errore, a patto che si sappia veramente quello che si sta facendo. Se crediamo di aver creato una copia di variabile1 memorizzata in variabile2 abbiamo commesso un errore perché questo codice assegna (come si vede dal printf) lo stesso indirizzo di memoria alle due variabili, quindi praticamente sono la stessa variabile
+
+
+Soluzione:
+
+
+char variabile1[5] = "ciao";
+char *variabile2;
+
+variabile2 = malloc(5 * sizeof(char));
+strcpy(variabile2, variabile1);
+
+
+char variabile1[5] = "ciao";
+char *variabile2;
+ 
+variabile2 = malloc(5 * sizeof(char));
+strcpy(variabile2, variabile1);
+Errore 3
+
+
+char *variabile2;
+variabile2 = "Ciao mondo";
+
+//oppure
+
+variabile2 = malloc(11 * sizeof(char));
+variabile2 = "Ciao mondo";
+
+
+char *variabile2;
+variabile2 = "Ciao mondo";
+ 
+//oppure
+ 
+variabile2 = malloc(11 * sizeof(char));
+variabile2 = "Ciao mondo";
+Questo errore è piuttosto comune e particolarmente insidioso, se provate a compilarlo non vi darà errori e probabilmente sembrerà anche funzionare, ma è profondamente errato perché la riga variabile2 = “Ciao mondo”, che sia preceduta da malloc o meno, sta assegnando al puntatore variabile2 un indirizzo di memoria temporaneo, l’indirizzo creato per noi dal compilatore che contiene la stringa “Ciao mondo”. Proprio perché temporaneo non possiamo fare affidamento a questo indirizzo, ma dobbiamo necessariamente copiare il contenuto della stringa in un array di cui siamo proprietari.
+
+Soluzione:
+
+
+variabile2 = malloc(11 * sizeof(char));
+strcpy(variabile2, "Ciao mondo");
+
+
+variabile2 = malloc(11 * sizeof(char));
+strcpy(variabile2, "Ciao mondo");
+Errore 4
+
+
+char variabile1[5] = "ciao";
+char variabile2[6] = "mondo";
+
+printf(" %s", variabile1 + variabile2);
+
+
+char variabile1[5] = "ciao";
+char variabile2[6] = "mondo";
+ 
+printf(" %s", variabile1 + variabile2);
+Questo errore viene commesso dai programmatori java e python :) la concatenazione di due stringhe non si fa con il ” + ” ma con l’operatore strcat e bisogna sempre verificare che sulla destinazione ci sia spazio a sufficienza.
+
+
+Soluzione:
+
+
+char string1[20] = "Hello, ";
+char string2[] = "world!";
+
+printf("%s\n", string1);
+strcat(string1, string2);
+printf("%s\n", string1);
+
+
+
+char string1[20] = "Hello, ";
+char string2[] = "world!";
+ 
+printf("%s\n", string1);
+strcat(string1, string2);
+printf("%s\n", string1);
+Errore 5
+
+
+char variabile1[6] = "abaco";
+char variabile2[4] = "zoo";
+
+if (variabile1 &lt; variabile2 ){
+    printf(&quot;La prima parola è minore della seconda&quot;);
+}
+
+
+char variabile1[6] = "abaco";
+char variabile2[4] = "zoo";
+ 
+if (variabile1 &lt; variabile2 ){
+    printf(&quot;La prima parola è minore della seconda&quot;);
+}
+L’operatore ” < " non effettua il confronto tra stringhe, ma sul valore dei puntatori quindi non vi darà errore e sembrerà funzionare in modo arbitrario
+
+Soluzione:
+
+
+char string1[] = "abaco";
+char string2[] = "zoo";
+
+if(strcmp(string1, string2) &lt; 0)
+   printf(&quot;La prima parola è minore della seconda&quot;);
+
+
+char string1[] = "abaco";
+char string2[] = "zoo";
+ 
+if(strcmp(string1, string2) &lt; 0)
+   printf(&quot;La prima parola è minore della seconda&quot;);
+E con questo è veramente tutto sull’argomento, non mi resta che consigliarvi una lettura attenta di tutte le pagine di man relative alla libreria string.h e augurarvi buona programmazione!

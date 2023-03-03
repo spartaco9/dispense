@@ -1,0 +1,323 @@
+
+https://it.wikipedia.org/wiki/Simple_DirectMedia_Layer
+
+---------------------------------------------------------------------
+
+
+
+
+
+                       Simple DirectMedia Layer
+
+
+
+
+
+             Simple DirectMedia Layer
+                     software
+     Genere       Libreria software (non in lista)
+  Sviluppatore    Sam Lantinga
+ Ultima versione  2.0 (13 agosto 2013)
+   Ultima beta    2.0.0-7635 (13 agosto, 2013)
+Sistema operativo Multipiattaforma
+   Linguaggio     C
+     Licenza      1.2 GNU LGPL / 2.0 Zlib license
+                  (licenza libera)
+    Sito web      www.libsdl.org/
+Modifica dati su Wikidata · Manuale
+
+
+
+Simple DirectMedia Layer (SDL) è una libreria libera multimediale multi
+piattaforma, scritta in C, che crea un livello astratto al di sopra di varie
+piattaforme software grafiche e sonore e dunque può controllare video, audio
+digitale, CD-ROM, suoni, thread, caricamento condiviso di oggetti, timer e
+networking. Questa astrazione permette ai programmatori di scrivere
+un'applicazione multimediale una sola volta e farla girare su molti sistemi
+operativi: la versione corrente supporta ufficialmente Linux, Windows, BeOS,
+MacOS e macOS, FreeBSD, OpenBSD, BSD/OS, Solaris, IRIX e QNX ma il codice
+sorgente offre il supporto non ufficiale anche per Windows CE, AmigaOS,
+Dreamcast, Atari, NetBSD, AIX, OSF/Tru64, RISC OS e SymbianOS.
+
+[ ]
+
+Indice
+
+  • 1 Storia
+  • 2 Architettura
+  • 3 Portabilità
+  • 4 Sottosistemi e sintassi
+  • 5 Estensioni
+  • 6 Note
+  • 7 Voci correlate
+  • 8 Altri progetti
+  • 9 Collegamenti esterni
+
+Storia[modifica | modifica wikitesto]
+
+Sam Lantinga ha creato la libreria, rilasciandola agli inizi del 1998, mentre
+lavorava per la Loki Software. Gli venne l'idea mentre stava portando
+un'applicazione da Windows a Macintosh. Ha poi utilizzato SDL per portare Doom
+in BeOS (vedi Doom source port). Parecchie altre librerie libere sono state
+sviluppate per funzionare con SDL, quali ad esempio SMPEG e OpenAL. Sam
+Lantinga ha anche fondato la Galaxy Gameworks nel 2008 per fornire supporto
+commerciale ad SDL su sistemi iOS; tuttavia la compagnia è stata dismessa dallo
+stesso Lantinga nel 2011.^[1]
+
+SDL 2.0 è un aggiornamento importante al codice di SDL 1.2 e modifica ampie
+porzioni dell'API. Alcune nuove caratteristiche comprendono il supporto a
+finestre multiple, il supporto a dispositivi di input multipli (molti mouse,
+tastiere, ecc...), grafica 2D accelerata, ed un supporto Unicode migliore.^[2]
+SDL 2.0 è distribuita sotto la Zlib license, e quindi liberamente utilizzabile
+con linking statico in progetti closed-source commerciali, a differenza di SDL
+1.2 che invece permette solo il linking dinamico^[3].
+
+Architettura[modifica | modifica wikitesto]
+
+La libreria ha collegamenti con quasi ogni linguaggio di programmazione
+esistente, dal popolare C++, Perl, Python (attraverso pygame), Pascal ai meno
+conosciuti come il Euphoria o il Pliant. Questo, e il fatto che è licenziato
+sotto la LGPL, fa di SDL una scelta comune per molte applicazioni multimediali.
+
+SDL è molto semplice; funziona solamente come un wrapper leggero e multi
+piattaforma che fornisce il supporto alle operazioni 2D sui pixel, suoni,
+accesso ai file, gestione degli eventi, temporizzatori, thread e altro. È
+spesso usata come complemento alle OpenGL settando l'output grafico e fornendo
+la gestione dei dispositivi di input, funzionalità che sono ben oltre lo scopo
+delle OpenGL.
+
+La libreria è suddivisa in sottosistemi, quali il Video (gestisce sia le
+funzioni per le superfici e per l'accesso a OpenGL), l'Audio, il CD-ROM, il
+Joystick e il Time. A parte il supporto a basso livello, vi sono alcune
+librerie ufficiali di supporto che forniscono funzionalità addizionali. Queste
+comprendono le "librerie standard", sono fornite sul sito ufficiale e incluse
+nella documentazione ufficiale:
+
+  • SDL_image - supporto per diversi formati di immagini
+  • SDL_mixer - funzioni audio complesse, principalmente per il missaggio dei
+    suoni
+  • SDL_net - supporto alla rete
+  • SDL_ttf - supporto alla renderizzazione dei Font TrueType
+  • SDL_rtf - Renderizzazione semplice del Rich Text Format
+
+Portabilità[modifica | modifica wikitesto]
+
+[220px-SDL_Layers]
+ 
+Livelli di astrazione su diverse piattaforme.
+
+SDL ha la parola "layer" nel suo nome perché è uno strato di collegamento a
+funzionalità specifiche dei sistemi operativi. Lo scopo principale di SDL è di
+fornire un framework comune per accedere a queste funzionalità.
+
+Per come è stata concepita l'architettura, gran parte del codice sorgente di
+SDL è suddiviso in moduli separati per ogni sistema operativo; quando SDL è
+compilato, i moduli corretti sono selezionati per il sistema operativo di
+destinazione.
+
+Sotto Microsoft Windows, SDL fornisce di default un collegamento all'intefaccia
+GDI; è anche disponibile un collegamento alle librerie DirectX. Le vecchie
+versioni di SDL utilizzavano le DirectX 5, ma SDL 1.2 (la release stabile
+corrente) richiede le DirectX 7. Sam Lantinga ha dichiarato che intende
+utilizzare le DirectX 8 nelle future release di SDL.^[4]
+
+Sulle piattaforme X11, incluso Linux, SDL usa Xlib per comunicare con il
+sistema X11 per la grafica e gli eventi.
+
+Su macOS, SDL usa Quartz.
+
+Sottosistemi e sintassi[modifica | modifica wikitesto]
+
+La sintassi di SDL si basa su funzioni: tutte le operazioni fatte in SDL
+vengono eseguite passando parametri a funzioni. Strutture di dati speciali sono
+usate per immagazzinare le informazioni delle quali SDL ha bisogno per
+funzionare. Ci sono alcuni sottosistemi sotto i quali SDL categorizza le sue
+funzioni:
+
+  • Il sottosistema Video, eventi e thread - questo fornisce funzionalità per
+    il video, multi-threading, e gestione degli eventi.
+  • Il sottosistema Audio - questo fornisce le funzionalità audio.
+  • Il sottosistema Time
+  • Il sottosistema Joystick
+  • Il sottosistema CD-ROM
+
+Estensioni[modifica | modifica wikitesto]
+
+  • SMPEG - Libreria player MPEG SDL
+  • Guichan e ParaGUI - Sets di Widget
+  • GGI - interfaccia grafica multi platform libera
+
+Note[modifica | modifica wikitesto]
+
+ 1. ^ Exploring the Galaxy, su slouken.blogspot.com, 6 aprile 2011. URL
+    consultato il 16 luglio 2012.
+ 2. ^ SDL 2.0 Roadmap, su wiki.libsdl.org. URL consultato il 25 luglio 2012.
+ 3. ^ Licensing the Simple DirectMedia Layer library, su libsdl.org. URL
+    consultato il 16 luglio 2012.
+ 4. ^ SDL mailing list, Libsdl.org. URL consultato il 16 luglio 2012.
+
+Voci correlate[modifica | modifica wikitesto]
+
+  • Allegro library
+  • OpenML
+  • DirectX
+  • OpenGL
+  • pygame
+
+Altri progetti[modifica | modifica wikitesto]
+
+Altri progetti
+
+  • Wikimedia Commons
+
+  • Collabora a Wikimedia Commons Wikimedia Commons contiene immagini o altri
+    file su Simple DirectMedia Layer
+
+Collegamenti esterni[modifica | modifica wikitesto]
+
+  • La documentazione di SDL, su libsdl.org.
+  • (EN) SDL sito web ufficiale, su libsdl.org.
+  • (DE) SDL sito web tedesco, su libsdl.de.
+  • (EN) DevMaster.net - un sito di sviluppo giochi che ha anche articoli e
+    tutorial su SDL.
+  • (EN) Il tutorial Wiki per la programmazione dei giochi su SDL, su 
+    gpwiki.org.
+
+Software libero Portale Software libero: accedi alle voci di Wikipedia che
+trattano di Software libero
+
+*
+Estratto da "https://it.wikipedia.org/w/index.php?title=
+Simple_DirectMedia_Layer&oldid=93773212"
+Categorie:
+
+  • Software multipiattaforma
+  • Software libero in C
+  • Software con licenza GNU LGPL
+  • Librerie software
+
+Categorie nascoste:
+
+  • Software con genere non riconosciuto
+  • P277 letta da Wikidata
+  • P348 differente su Wikidata
+  • P856 letta da Wikidata
+
+Menu di navigazione
+
+Strumenti personali
+
+  • Accesso non effettuato
+  • discussioni
+  • contributi
+  • registrati
+  • entra
+
+Namespace
+
+  • Voce
+  • Discussione
+
+[ ]
+
+Varianti
+
+Visite
+
+  • Leggi
+  • Modifica
+  • Modifica wikitesto
+  • Cronologia
+
+[ ]
+
+Altro
+
+Ricerca
+
+[                    ][Ricerca][Vai]
+ 
+
+Navigazione
+
+  • Pagina principale
+  • Ultime modifiche
+  • Una voce a caso
+  • Nelle vicinanze
+  • Vetrina
+  • Aiuto
+  • Sportello informazioni
+
+Comunità
+
+  • Portale Comunità
+  • Bar
+  • Il Wikipediano
+  • Fai una donazione
+  • Contatti
+
+Strumenti
+
+  • Puntano qui
+  • Modifiche correlate
+  • Pagine speciali
+  • Link permanente
+  • Informazioni pagina
+  • Elemento Wikidata
+  • Cita questa voce
+
+Stampa/esporta
+
+  • Crea un libro
+  • Scarica come PDF
+  • Versione stampabile
+
+In altri progetti
+
+  • Wikimedia Commons
+
+In altre lingue
+
+  • العربية
+  • Català
+  • Čeština
+  • Deutsch
+  • English
+  • Español
+  • فارسی
+  • Suomi
+  • Français
+  • Magyar
+  • Bahasa Indonesia
+  • 日本語
+  • 한국어
+  • Nederlands
+  • Norsk
+  • Polski
+  • Português
+  • Русский
+  • Slovenčina
+  • Svenska
+  • Türkçe
+  • Українська
+  • Tiếng Việt
+  • 中文
+
+Modifica collegamenti
+
+  • Questa pagina è stata modificata per l'ultima volta l'11 gen 2018 alle
+    11:59.
+  • Il testo è disponibile secondo la licenza Creative Commons
+    Attribuzione-Condividi allo stesso modo; possono applicarsi condizioni
+    ulteriori. Vedi le condizioni d'uso per i dettagli.
+
+  • Informativa sulla privacy
+  • Informazioni su Wikipedia
+  • Avvertenze
+  • Sviluppatori
+  • Dichiarazione sui cookie
+  • Versione mobile
+
+  • Wikimedia Foundation
+  • Powered by MediaWiki
+

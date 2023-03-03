@@ -1,0 +1,1 @@
+Scanf = Legge L' Input E Ci Permette Di Acquisire O Meglio Di Salvare Su Uno Spazio Della Memoria Una Nuova Variabile Da Scegliere E Dichiarare A Nostra Scelta Che Abbiamo Gia Creato In Precedenza.

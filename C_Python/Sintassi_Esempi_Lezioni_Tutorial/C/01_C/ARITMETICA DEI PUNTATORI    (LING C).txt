@@ -1,0 +1,105 @@
+
+                                  ARITMETICA DEI PUNTATORI
+
+
+
+Nei linguaggi di programmazione, l'espressione aritmetica dei puntatori si riferisce a un insieme di operazioni aritmetiche applicabili sui valori di tipo puntatore. Tali operazioni hanno lo scopo di consentire un alto livello di flessibilità nell'accesso a collezioni di dati omogenei conservati in posizioni contigue della memoria (per esempio array). L'aritmetica dei puntatori è tipica del linguaggio C ed è stata mantenuta in alcuni linguaggi derivati (è presente per esempio in C++ ma non in Java).
+
+Indice  [nascondi] 
+1	Aritmetica dei puntatori nel linguaggio C
+1.1	Operatore di somma di un puntatore e un intero
+1.1.1	Definizione
+1.1.2	Significato
+1.2	Operatore di differenza fra due puntatori
+1.2.1	Definizione
+1.2.2	Significato
+1.3	Operatore di sottrazione di un intero da un puntatore
+1.3.1	Definizione
+1.3.2	Significato
+1.4	Operatore di autoincremento e autodecremento di un puntatore
+1.5	Altri operatori
+2	Nota sull'overloading
+Aritmetica dei puntatori nel linguaggio C[modifica | modifica wikitesto]
+L'aritmetica dei puntatori del C è basata su tre operatori fondamentali, accompagnati da un certo numero di altri operatori la cui semantica è derivata da quella degli operatori principali:
+
++: operatore binario di somma di un puntatore e un intero
+derivato: ++: operatore unario di autoincremento di un puntatore
+derivato: +=: operatore di assegnamento con somma
+-: operatore binario di differenza fra due puntatori
+-: operatore binario di sottrazione di un intero da un puntatore
+derivato: --: operatore unario di autodecremento di un puntatore
+derivato: -=: operatore di assegnamento con differenza
+Operatore di somma di un puntatore e un intero[modifica | modifica wikitesto]
+Definizione[modifica | modifica wikitesto]
+L'operatore di somma di puntatore e intero richiede un operando di tipo puntatore e un operando di tipo intero. Il risultato della somma è l'indirizzo dato dal puntatore incrementato del risultato della moltiplicazione dell'intero specificato per la dimensione (sizeof) del tipo base del puntatore espressa in byte. Per esempio, se p è un puntatore al tipo intero int (int *p) di valore 1000 (p=1000), e se la dimensione di un int è due byte, p+1 vale 1002, p+2 vale 1004, e in generale p+n vale 1000+n*2.
+
+Significato[modifica | modifica wikitesto]
+L'operazione di somma fra puntatore e intero è significativa nel caso in cui il puntatore contenga l'indirizzo di una cella di un array di dati del tipo base del puntatore. Infatti, se p (puntatore a intero) contiene l'indirizzo della prima cella di un array di interi, p+1 produce l'indirizzo della seconda cella, p+2 l'indirizzo della terza, e via dicendo. L'aritmetica dei puntatori quindi introduce una sintassi alternativa rispetto a quella tradizionale (basata su indicizzazione) per accedere agli elementi di un array.
+
+Operatore di differenza fra due puntatori[modifica | modifica wikitesto]
+Definizione[modifica | modifica wikitesto]
+L'operatore di differenza fra puntatori richiede due operandi entrambi di tipo puntatore, aventi tipo base omogeneo (per esempio due puntatori a intero, due puntatori a carattere, e via dicendo). Il risultato della differenza è la differenza aritmetica fra i due indirizzi specificati dai puntatori, divisa per la dimensione del tipo base. Per esempio, se p contiene 1002 e q contiene 1000, ed entrambi sono puntatori a int, e la dimensione degli int è 2, allora q-p vale 1.
+
+Significato[modifica | modifica wikitesto]
+L'operazione di differenza fra puntatori è significativa se i due operandi contengono gli indirizzi di due celle diverse del medesimo array, e se il tipo base dell'array coincide con quello dei due puntatori. In questo caso, infatti, la differenza fra i due puntatori corrisponde al numero di celle dell'array che separano la cella puntata dal puntatore di valore minore da quella del puntatore di valore maggiore.
+
+Operatore di sottrazione di un intero da un puntatore[modifica | modifica wikitesto]
+Definizione[modifica | modifica wikitesto]
+L'operazione di sottrazione di un intero da un puntatore prevede un operando sinistro di tipo puntatore e un operando destro di tipo intero. Il risultato (analogamente al caso della somma) è il valore del puntatore decrementato del risultato della moltiplicazione dell'intero per la dimensione del tipo base del puntatore. Per esempio, se p è un puntatore a int di valore 1000, e la dimensione di un int è 2, p-1 vale 998.
+
+Significato[modifica | modifica wikitesto]
+Sotto le stesse condizioni descritte sopra per la somma, l'operazione di sottrazione di un intero da un puntatore consente di ricavare l'indirizzo di una cella di un array precedente a quella puntata dal puntatore su cui viene applicata la sottrazione.
+
+Operatore di autoincremento e autodecremento di un puntatore[modifica | modifica wikitesto]
+Nel linguaggio C, le operazioni di autoincremento e autodecremento di un puntatore, come quelle di autoincremento e autodecremento di numeri interi, rappresentano una forma particolare di somma e sottrazione. Esse sono definite dal seguente effetto:
+
+x++ incrementa x di 1, e produce il valore di x prima dell'incremento
+++x incrementa x di 1, e produce il valore di x dopo l'incremento
+x-- decrementa x di 1, e produce il valore di x prima del decremento
+--x decrementa x di 1, e produce il valore di x dopo il decremento
+Tenute ferme queste definizioni, il significato di questi operatori nel caso il loro operando sia un puntatore si ricava dalla definizione di somma di puntatore e intero e di sottrazione di un intero da un puntatore.
+
+Altri operatori[modifica | modifica wikitesto]
+Le regole descritte sopra si applicano in C anche ad altri due operatori, definiti in termini degli operatori + e -:
+
+p+=n corrisponde a p=p+n
+p-=n corrisponde a p=p-n
+Nota sull'overloading[modifica | modifica wikitesto]
+Tutti gli operatori descritti sopra hanno, in C e nei linguaggi derivati, un significato anche nel caso gli operandi siano dati numerici non di tipo puntatore. Il fatto che lo stesso simbolo acquisisca significati (leggermente) diversi in funzione del tipo dei suoi operandi può considerarsi un caso di overloading degli operatori.
+
+Informatica Portale Informatica: accedi alle voci di Wikipedia che trattano di informatica
+Categoria: Teoria dei tipi| [altre]
+Menu di navigazione
+Accesso non effettuatodiscussionicontributiRegistratiEntraVoceDiscussioneLeggiModificaModifica wikitestoCronologiaRicerca
+
+Ricerca
+Vai
+Pagina principale
+Ultime modifiche
+Una voce a caso
+Vetrina
+Aiuto
+Comunità
+Portale Comunità
+Bar
+Il Wikipediano
+Fai una donazione
+Contatti
+Strumenti
+Puntano qui
+Modifiche correlate
+Carica su Commons
+Pagine speciali
+Link permanente
+Informazioni sulla pagina
+Elemento Wikidata
+Cita questa voce
+Stampa/esporta
+Crea un libro
+Scarica come PDF
+Versione stampabile
+Lingue
+Aggiungi collegamenti
+Questa pagina è stata modificata per l'ultima volta il 7 nov 2015 alle 00:55.
+Il testo è disponibile secondo la licenza Creative Commons Attribuzione-Condividi allo stesso modo; possono applicarsi condizioni ulteriori. Vedi le Condizioni d'uso per i dettagli. Wikipedia® è un marchio registrato della Wikimedia Foundation, Inc. 
+Politica sulla privacyInformazioni su WikipediaAvvertenzeSviluppatoriDichiarazione sui cookieVersione mobileWikimedia Foundation Powered by MediaWiki

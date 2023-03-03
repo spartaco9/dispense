@@ -1,0 +1,74 @@
+
+
+                               IDENTIFICATORI LINGUAGGIO C
+
+
+
+Elementi fondamentali del linguaggio C
+
+
+Identificatori e variabili
+
+Lo standard ANSI C definisce identificatori quei nomi che "identificano", ovvero attraverso i quali si fa riferimento a:
+variabili;
+funzioni;
+etichette;
+e altri oggetti definiti dall'utente.
+
+Un identificatore è costituito da uno o piu' caratteri, e deve seguire le seguenti regole:
+il primo carattere deve essere una lettera o un underscore ( _ );
+i caratteri successivi possono essere lettere, numeri o underscore.
+Gli identificatori possono avere qualsiasi lunghezza ma sono significativi:
+
+per nomi esterni: 6 caratteri
+per nomi interni: 31 caratteri
+
+
+Le variabili
+
+Una variabile è un contenitore, una cella di memoria identificata con un nome simbolico. Essa rappresenta un dato che può cambiare il proprio contenuto durante l'esecuzione di un programma.
+
+Dichiarazione delle variabili 
+
+<dichiarazione_variabile> ::=
+                            <tipo > <elenco_di_variabili> 
+<elenco_di_variabili> ::=
+                            <ident> {,<ident>}
+
+
+
+Esempio 
+         int         	P,k,l; 
+         long int     var;
+Le variabili possono essere dichiarate:
+
+all'interno delle funzioni ( variabili locali )
+nella definzione degli argomenti delle funzioni ( parametri formali )
+all'esterno di tutte le funzioni ( variabili globali )
+Le variabili locali possono essere utilizzate solo dalle istruzioni che si trovano all'interno del blocco in cui sono dichiarate, e quindi non sono accessibili all'esterno di tale blocco.
+Per blocco si intende quella parte di codice tra una parentesi graffa aperta e la corrispondente parentesi graffa chiusa.
+La vita di queste variabili è legata all'esecuzione del blocco di codice in cui sono dichiarate. Infatti la variabile locale viene creata nel momento in cui si entra nel blocco e viene rilasciata all'uscita, quindi il suo contenuto viene perso all'uscita dal blocco.
+E' possibile inizializzare una variabile locale ad un determinato valore; tale valore verrà assegnato alla variabile ogni volta che si accede al blocco. solo passaggio per valore passaggio per variabile: passare per valore l'indirizzo
+
+I parametri formali vengono usati quando una funzione deve utilizzare gli argomenti. In questo caso la funzione deve predisporre un insieme di variabili che hanno lo scopo di ricevere i valori degli argomenti. 
+I parametri formali di una funzione si comportano come una qualunque altra variabile locale all'interno della funzione. 
+Bisogna assicurarsi che i parametri formali siano dello stesso tipo dei parametri attuali, il C non effettua nessun controllo in tal senso. 
+L'ANSI C fornisce il meccanismo dei prototipi di funzione che possono essere utilizzati per verificare che gli argomenti utilizzati per chiamare a funzione siano compatibili con quelli definiti nella funzione stessa.
+
+Le variabili globali a differenza di quelle locali sono note all'intero programma e possono essere usate in qualsiasi punto del codice. 
+Esse conservano il proprio valore durante l'intera esecuzione del programma. 
+E' possibile dichiarare le variabili globali in qualsiasi punto prima del suo uso, ma normalmente vengono dichiarate all'inizio del programma. 
+Se una variabile globale e una locale hanno lo stesso nome, ogni riferimento della variabile all'interno del del blocco di codice in cui è dichiarata la variabile locale farà riferimento a quest'ultima. 
+Il C riserva un area di memoria per le variabili globali.
+
+Vantaggi:
+sono utili quando piu' funzioni utilizzano gli stessi dati.
+Svantaggi:
+impiegano la memoria per tutta la durata del programma e non solo quando e' necessaria;
+l'uso di una variabile globale dove potrebbe essere usata una locale rende le funzioni meno generali perche il loro funzionamento implica la conoscenza di un elemento esterno alla funzione;
+usando molte variabili globali si rischia di perdere il controllo e cio' puo' portare ad errori dovuti ad effetti collaterali indesiderati ed imprevisti.
+
+
+
+
+Home07.gif (2312 byte)  indice capitolo

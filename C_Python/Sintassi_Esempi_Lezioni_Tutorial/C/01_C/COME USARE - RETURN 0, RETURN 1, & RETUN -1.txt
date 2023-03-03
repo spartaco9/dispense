@@ -1,0 +1,62 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define SIZE 100
+
+int main(){
+
+    int i;                          // i = indice
+    int k;                         //  k = kiave
+    int v[5] = {2, 5, 4, 1, 23};
+
+    printf("\n\n  Inserire Valore Chiave : ");
+    scanf("%d", &k);
+
+    i=0;
+    while((k != v[i]) && (i < 5))   // questo while ha i requisiti di un for ed è un suo equivalente
+        i++;
+
+        if(i < 5)
+            printf("\n  La Chiave E' Stata Trovata Nella Posizione %d\n\n", i);
+
+        else{
+
+            printf("\n  La Chiave Immessa Non E' Stata Trovata\n\n");}
+
+        getchar();
+        return -1;}
+
+vedi che c'è solo il while
+// IL define all inzio e da togliere
+nn ce fa caso
+
+manco l'ho visto
+ahahha
+
+c'è solo il while
+ok
+
+se li dai return 0 lui riparte da capo
+e trova il while
+aaaaaaaah ok
+
+sa li dai return -1 lui torna indietro di una funzione cioè al while
+se ce ne fossero due
+e un po come inizializzare un indici a 1
+come 
+
+i = 1
+
+e li dai return 0 torna da capo
+e ti elabora due funzioni
+la prima e la seconda
+quando invece una volt arrivato alla fine cioè la seconda col return -1 deve rieseguire la seconda
+capit?
+sisi
+adesso m e chiaro 🙂
+ammazza quanto sei forte
+porco due
+sai tutto
+ahahhahahahahah
+
+ecco perché non vedi differenza se li dai 0 o -1 perché in questo specifico caso hai culo...
+ma sarebbe errato come logica dell'algoritmo

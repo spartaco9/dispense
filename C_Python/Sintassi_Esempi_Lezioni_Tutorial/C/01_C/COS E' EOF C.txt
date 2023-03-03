@@ -1,0 +1,207 @@
+- Sto cercando di capire a cosa corrisponda l'EOF (End of File) in c++. Stavo    guardando un progrmmino semplice su una guida che contava i caretteri          battuti fino a che il carettere battuto non corrispondeva a EOF.
+
+  Io so che EOF significa End of File, e che nella libreria <stdio.h> è di       default -1, ma può essere anche definito a 0.
+
+  Ma non riesco a capire quando il carettere immesso corrisponde alla EOF,
+
+  questo è il pezzo del programma :
+
+
+for (caratteri = 0; getchar() != EOF; ++caratteri);
+printf("%d", caratteri);
+
+Qualcuno sa dirmi a che carattere corrisponde EOF?
+
+io dal Visual Basic (che vergogna :fagiano: ) so che EOF è un "segnale" di fine del file, nel caso in cui imposti un limite di dimensione.
+Ma in teoria la fine del file è una cosa astratta, ovvero arrivo ad EOF solo se mi finisce la memoria disponibile.... 
+
+cosa significa nel c++?
+HTML.IT TV#Future Decoded: Giorgio Sardo
+
+
+LeleFT
+10-11-2004, 15:40
+EOF significa appunto End Of File. In C++ quasi tutto può essere visto come un file (un file vero e proprio, uno stream in input, ecc.)
+Per battere un carattere di EOF dipende molto da quale S.O. si sta usando: in generale, comunque, o è CTRL + Z oppure CTRL + C.
+
+
+Ciao. :ciauz:
+Alì Babà
+10-11-2004, 18:31
+#include <stdio.h> //in stdio.h EOF è di default -1
+main()
+{
+double nc;
+
+for (nc = 0; getchar() != EOF; ++nc)
+;
+printf("%.0f\n", nc);
+getchar();
+}
+
+In un programmino del genere, in teoria doveva contare i caretteri battuti diversi da EOF, quindi il ciclo termina quando viene battuto EOF (ho usato Ctrl+C, Ctrl+Z non funzionava).
+
+In pratica però alla pressione di Ctrl+C si chiude il file (e giustamente credo, avendo battuto EOF) quindi le righe dopo non vengono eseguite, senza che venga dato in output il numero di caretteri battuti.
+andrea_NET-_DSL
+10-11-2004, 20:18
+Originariamente inviato da Alì Babà 
+#include <stdio.h> //in stdio.h EOF è di default -1
+main()
+{
+double nc;
+
+for (nc = 0; getchar() != EOF; ++nc)
+;
+printf("%.0f\n", nc);
+getchar();
+}
+
+In un programmino del genere, in teoria doveva contare i caretteri battuti diversi da EOF, quindi il ciclo termina quando viene battuto EOF (ho usato Ctrl+C, Ctrl+Z non funzionava).
+
+In pratica però alla pressione di Ctrl+C si chiude il file (e giustamente credo, avendo battuto EOF) quindi le righe dopo non vengono eseguite, senza che venga dato in output il numero di caretteri battuti. 
+Leva assolutamente quel ; dopo il for...
+
+Ricompila ed esegui il programma come di seguito...
+
+
+#include <stdio.h> 
+main(){
+
+double nc;
+
+for (nc = 0; getchar() != EOF; ++nc)
+printf("%.0f\n", nc);
+
+getchar();
+}
+Alì Babà
+10-11-2004, 20:55
+Beh, quel ; in teoria è indispesabile.
+Praticamente fa in modo che il ciclo gira fino a che non si verifica la condizione getchar() != EOF
+così, finito il ciclo può dirti il numero di caretteri scritti in totale.
+
+altrimenti se non ci fosse il ; scriverebbe il numero di caratteri ogni volta che esegue il ciclo.
+andrea_NET-_DSL
+11-11-2004, 15:34
+Originariamente inviato da Alì Babà 
+
+
+altrimenti se non ci fosse il ; scriverebbe il numero di caratteri ogni volta che esegue il ciclo. 
+credevo volessi fare propio questo :dottò: :) ..altrimenti,giustamente,lascialo.
+
+:ciauz:
+Alì Babà
+11-11-2004, 19:31
+Ecco come ho fatto, per fare in modo che mi dica quanti caretteri ho battuto alla fine.
+
+
+#include <stdio.h> //in stdio.h EOF è di default -1
+main()
+{
+double nc;
+int chara;
+nc=0;
+for (chara = getchar(); chara != '\n'; chara = getchar())
+{ 
+++nc; 
+}
+printf("Hai battuto %.0f caratteri\n", nc);
+getchar();
+}
+
+adesso funziona come volevo, praticamente ti dici quanti caretteri hai scritto prima che si battesse Invio.
+
+se invece volessi fare che il programma ti dice quanti caratteri hai battuto prima di scrivere as esempio "a", ho cambiato così;
+
+
+#include <stdio.h> //in stdio.h EOF è di default -1
+main()
+{
+double nc;
+int chara;
+nc=0;
+for (chara = getchar(); chara != 'a'; chara = getchar())
+{ 
+++nc; 
+}
+getchar();
+printf("Hai battuto %.0f caratteri\n", nc);
+getchar();
+}
+
+se non ce lo mettessi, il programma appena batto a non fa nulla e non esegue la riga del printf, e se premo Invio esegue l'ultima riga e chiude il programma.
+Come mai?
+
+Infine, se invece mettessti la condizione != EOF il programma si chiude direttamente nel momento in cui premo Ctrl+C (corrispondente a EOF) e quindi non eseguirà mai le ultime righe.
+
+Come mai nel manuale originale del C allora hanno inserito questa condizione?
+andrea_NET-_DSL
+11-11-2004, 19:50
+Originariamente inviato da Alì Babà 
+Ecco come ho fatto, per fare in modo che mi dica quanti caretteri ho battuto alla fine.
+
+
+#include <stdio.h> //in stdio.h EOF è di default -1
+main()
+{
+double nc;
+int chara;
+nc=0;
+for (chara = getchar(); chara != '\n'; chara = getchar())
+{ 
+++nc; 
+}
+printf("Hai battuto %.0f caratteri\n", nc);
+getchar();
+}
+
+adesso funziona come volevo, praticamente ti dici quanti caretteri hai scritto prima che si battesse Invio.
+
+se invece volessi fare che il programma ti dice quanti caratteri hai battuto prima di scrivere as esempio "a", ho cambiato così;
+
+
+#include <stdio.h> //in stdio.h EOF è di default -1
+main()
+{
+double nc;
+int chara;
+nc=0;
+for (chara = getchar(); chara != 'a'; chara = getchar())
+{ 
+++nc; 
+}
+getchar();
+printf("Hai battuto %.0f caratteri\n", nc);
+getchar();
+}
+
+se non ce lo mettessi, il programma appena batto a non fa nulla e non esegue la riga del printf, e se premo Invio esegue l'ultima riga e chiude il programma.
+Come mai?
+
+Infine, se invece mettessti la condizione != EOF il programma si chiude direttamente nel momento in cui premo Ctrl+C (corrispondente a EOF) e quindi non eseguirà mai le ultime righe.
+
+Come mai nel manuale originale del C allora hanno inserito questa condizione? 
+
+Nel secondo esempio da te postato prova a sostituire il getchar(); ,che hai messo in grassetto, con fflush(stdin); e dimmi se ti và!
+
+ciao :)
+Alì Babà
+11-11-2004, 20:44
+No, continua a richiedere la pressione di Invio, non fa un passaggio automatico. Ma mi sembra che sia un problema di getchar() e putchar() quello di non essere dei comandi immediati...non vorrei dire castronerie...
+
+Cosa dovrebbe fare quell'istruzione?
+andrea_NET-_DSL
+12-11-2004, 19:10
+Originariamente inviato da Alì Babà 
+No, continua a richiedere la pressione di Invio, non fa un passaggio automatico. Ma mi sembra che sia un problema di getchar() e putchar() quello di non essere dei comandi immediati...non vorrei dire castronerie...
+
+Cosa dovrebbe fare quell'istruzione? 
+
+pulisce,svuolta cioè,il buffer indicato come argomento.(in questo caso lo stdin,cioè quello di lettura)
+
+E' d'obbligo,ad es,tra pià scanf() consecutivi per far in modo che dopo il primo l'altro non venga saltato!
+
+:ciauz:
+
+
+Cerca	 

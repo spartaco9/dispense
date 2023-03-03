@@ -1,0 +1,231 @@
+                      
+                            OPERATORI INFORMATICA 
+
+Sezione 1.3  
+Operatori. 		
+
+Una volta appreso dell'esistenza delle variabili e delle costanti possiamo iniziare ad operare con esse. A questo scopo il C++ fornisce degli operatori, che nel nostro linguaggio sono un insieme di parole chiave e simboli speciali.  E' importante conoscerli perché essi sono la base del linguaggio C++.
+
+Non è necessario inparare a memoria tutto il contenuto di questa sezione. La maggior parte dei dettagli sono riportati per poterli consultare in seguito qualora se ne abbia bisogno.
+
+Assegnamento (=).
+
+L'operatore di assegnamento serve per assegnare un valore ad una variabile.
+a = 5;
+assegna il valore intero 5 alla variabile a . La parte alla sinistra dell'operatore = è nota come lvalue (left value) e la parte destra rvalue (right value). lvalue deve essere sempre una variabile mentre la parte destra può essere una costante, una variabile, il risultato di una operazione o una qualsiasi combinazione di essi.
+Occorre notare che l'operatore di assegnamento opera sempre da destra verso sinistra e non nel senso inverso.
+
+a = b;
+assegna alla variabile a (lvalue) il valore della variabile b (rvalue) indipendentemente dal valore che era precedentemente memorizzato nella variabile a . Possiamo pensare l'lvalue di a come l'indirizzo della zona di memoria riservata per memorizzare il valore di a mentre   l'rvalue di b lo dobbiamo pensare come il valore memorizzato  nella zona di memoria riservata per memorizzare il valore di b.  Notiamo inoltre che noi stiamo soltanto assegnando ad a il valore di b e che una modifica successiva di b non cambia il nuovo valore di a.
+Ad esempio, il seguente codice (in cui è evidenziata in verde come commento l'evoluzione del contenuto delle variabili):
+
+int a, b;    // a:?  b:?
+a = 10;      // a:10 b:?
+b = 4;       // a:10 b:4
+a = b;       // a:4 b:4
+b = 7;       // a:4 b:7
+otteniamo alla fine che il valore contenuto in a è 4 e quello contenuto in b è 7. L'ultima modifica di b non ha modificato a, benché appena prima avessimo scritto a = b.
+Una caratteristica dell'operatore di assegnamento presente in C++ ma non in altri linguaggi di programmazione è che un assegnamento si può usare come rvalue (o parte di un rvalue ) in un altro assegnamento. Ad esempio:
+
+a = 2 + (b = 5);
+è equivalente a:
+b = 5; 
+a = 2 + b;
+ossia: prima assegna 5 alla variabile b e poi  assegna ad a il valore 2 più il risultato del precedente assegnamento a b ( 5 appunto),  ottenendo 7 come valore finale di a. Quindi,  anche la seguente espressione è valida in C++:
+a = b = c = 5;
+assegna 5 a tutte e tre le variabili a, b e c. 
+ 
+Operatori aritmetici ( +, -, *, /, % )
+
+I cinque operatori aritmetici previsti dal linguaggio sono:
+  
+  
++	somma
+-	differenza
+*	moltiplicazione
+/	divisione
+%	modulo (o resto)
+Gli operatori di somma, differenza, moltiplicazione e divisione denotano le usuali quattro operazioni numeriche. L'operatore di modulo fornisce il resto della divisione di due numeri interi. Ad esempio, se scriviamo a = 11 % 3;, viene assegnato alla variabile a il valore 2 in quanto 2 è proprio il resto che si ottiene dividendo 11 per 3. 
+ 
+Operatori di assegnamento composti ( +=, -=, *=, /=, %=, >>=, <<=, &=, ^=, |= )
+
+Gli operatori di assegnamento composti sono una caratteristica del C++   che  contribuisce alla sua fama di essere un linguaggio sintetico.    Essi permettono di modificare il valore di una variabile con una  sola   operazione:
+valore += incremento;        è equivalente a valore = valore + incremento; 
+a -= 5;                                   è equivalente ad a = a - 5; 
+a /= b;                                   è equivalente ad a = a / b; 
+prezzo *= numero + 1;       è equivalente a prezzo = prezzo * (numero + 1);
+e analogamente per le altre operazioni. 
+ 
+Incremento e decremento.
+
+Un altro esempio di sinteticità si ha con gli operatori  di incremento    (++) e di decremento (--). Essi aumentano o diminuiscono  di 1 il valore  di una variabile e sono equivalenti a   += 1 e   -= 1 rispettivamente. Quindi:
+a++; 
+a += 1; 
+a = a+1;
+fanno la stessa cosa: aumentano di 1 il valore di a.
+Questi operatori si possono usare sia come prefissi che come postfissi . Ossia possono essere scritti prima della variabile ( ++a ) o dopo di essa ( a++ ). Benché in espressioni semplici come a++    o ++a gli operatori prefissi e postfissi abbiano lo stesso significato, in altri casi in cui viene utilizzato il risultato dell'operazione nella valutazione di un'altra espressione essi assumono un significato diverso:  Se l'operatore di incremento viene usato come prefisso ( ++a ) il valore della variabile viene incrementato prima della valutazione dell'espressione e quindi l'espressione viene valutata usando il valore incrementato; se l'operatore di incremento viene usato come postfisso    ( a++ ) il valore della variabile viene incrementato dopo la valutazione dell'espressione e quindi l'espressione viene valutata usando il valore non incrementato. Ecco un esempio della differenza tra i due modi di usare l'operatore:
+
+  
+  
+Esempio 1	Esempio 2
+B = 3; 
+A = ++B; 
+// A è 4, B è 4	B = 3; 
+A = B++; 
+// A è 3, B è 4
+Nel primo esempio, la variabile B viene incrementata prima   che il suo valore venga copiato in A mentre nel secondo esempio    viene prima copiato in A il valore della variabile B e poi  viene incrementato il valore della variabile B. 
+ 
+Operatori relazionali ( ==, !=, >, <, >=, <= )
+
+Per confrontare i valori di due espressioni si usano gli operatori relazionali.  Come specificato dallo standard ANSI-C++, il risultato di un operatore  relazionale è di tipo bool e può assumere soltanto uno dei due valori booleani true o false, a seconda del risultato del confronto.
+Ecco la lista degli operatori relazionali del C++:
+
+  
+  
+==	Uguale
+!=	Diverso
+>	Maggiore
+<	Minore 
+>=	Maggiore o uguale
+<=	Minore o uguale
+Ed ecco alcuni esempi:
+  
+  
+(7 == 5)	risultato false .
+(5 > 4)	risultato true .
+(3 != 2)	risultato true .
+(6 >= 6)	risultato true .
+(5 < 5)	risultato false .
+naturalmente, invece di usare soltanto costanti numeriche possiamo usare qualunque espressioni valida, comprese le variabili. Supponiamo che a=2, b=3e c=6,
+  
+  
+(a == 5)	risultato false.
+(a*b >= c)	risultato true in quanto (2*3 >= 6).
+(b+4 > a*c)	risultato false in quanto (3+4 > 2*6).
+((b=2) == a)	risultato true.
+Attenzione. L'operatore = (un solo uguale) è differente dal simbolo == (doppio uguale), il primo è l'operatore di assegnamento (assegna il valore dell'espressione alla sua destra alla variabile alla sua sinistra e ritorna tale valore) mentre il secondo è l'operatore relazionale di uguaglianza che confronta i valori delle due espressioni che stanno ai suoi lati e ritorna il valore booleano true o false a seconda che esse abbiano lo stesso valore o valori diversi. Quindi nell'ultima espressione ((b=2) == a), viene dapprima assegnato il valore 2 a b e quindi tale valore viene confrontato con il valore di a, che è pure 2, e quindi il risultato che si ottiene è il valore true. 
+  
+  
+       In molti compilatori  precedenti la pubblicazione dello standard ANSI-C++, come pure in C, gli operatori relazionali non ritornano un valore bool (true o false ) ma ritornano  un valore int con 0 che rappresenta   "false" e un valore  diverso  da 0 (in genere 1 ) che rappresenta  "true" . 
+Operatori logici ( !, &&, || ).
+
+L'operatore ! è l'operatore logico di negazione NOT. Esso ha un unico operando (di tipo bool) posto alla sua destra e il suo risultato è l'opposto del valore dell'operando: se l'operando è true esso ritorna false , se l'operando è false esso ritorna true . Ad esempio:
+  
+  
+!(5 == 5)	ritorna false in quanto l'espressione alla sua destra (5 == 5) è true .
+!(6 <= 4)	ritorna true in quanto (6 <= 4) è false               .
+!true	ritorna false.
+!false	ritorna true.
+Gli operatori  && e || sono gli operatori logici di congiunzione (AND) e disgiunzione (OR). Essi hanno due operandi (di tipo bool), uno alla sinistra ed uno alla destra, e il risultato è quello riportato nella seguente tabella:
+  
+  
+Primo  
+operando  
+a	Secondo  
+operando  
+b	Risultato 
+di 
+a && b	Risultato 
+di 
+a || b
+true	true	true	true
+true	false	false	true
+false	true	false	true
+false	false	false	false
+Ad esempio:
+( (5 == 5) && (3 > 6) ) ritorna false ( true && false ). 
+( (5 == 5) || (3 > 6) ) ritorna true ( true || false ) .
+Operatore condizionale ( ? ).
+
+L'operatore condizionale valuta una espressione booleana e ritorna un valore diverso a seconda che tale valore sia true oppure false. La sua forma è:
+condizione ? risultato1 : risultato2
+se condizione è true l'espressione ritorna risultato1, altrimenti ritorna risultato2.
+  
+  
+7==5 ? 4 : 3	  ritorna 3 perché 7 non è uguale a 5 .
+7==5+2 ? 4 : 3	  ritorna 4 perché 7 è uguale a 5+2 .
+5>3 ? a : b	  ritorna a, perché 5 è maggiore di 3    .
+a>b ? a : b	  ritorna il maggiore dei due, a o b            .
+Operatori bit a bit ( &, |, ^, ~, <<, >> ).
+
+Gli operatori bit a bit operano in parallelo su tutti i bit degli operandi. Essi sono operatori di basso livello a cui corrispondono alcune operazioni assembler. Nella programmazione normale C++ essi non dovrebbero essere usati.
+  
+  
+operatore	assembler	                 Descrizione
+&	AND	AND bit a bit
+|	OR	OR bit a bit
+^	XOR	OR esclusivo bit a bit
+~	NOT	NOT bit a bit (complemento a uno)
+<<	SHL	Spostamento dei bit (shift) a sinistra
+>>	SHR	Spostamento dei bit (shift) a destra
+Operatori espliciti di conversione di tipo (casting)
+
+Gli operatori di conversione servono per convertire valori appartenenti ad un tipo in valori di un altro tipo. Vi sono diversi modi per fare questo in C++. Il vecchi modo (stile C) consiste nel far precedere le espressioni che devono essere convertite dal nome del nuovo tipo racchiuso tra parentesi ():
+int i; 
+float f = 3.14; 
+i = (int) f;
+Il codice precedente converte il numero float 3.14 nel valore intero 3. L'operatore di conversione è rappresentato da (int).  Un modo più consono allo stile C++ è quello di usare la funzione costruttore: far precedere l'espressione da convertire, racchiusa tra parentesi, dal nome del nuovo tipo.
+i = int ( f );
+Entrambe le forme sono accettate dallo standard ANSI-C++ che inoltre ha aggiunto altri tipi di conversione adatti alla programmazione ad oggetti.  (vedi  Sezione 5.4, Conversioni di tipo avanzate).
+Operatore sizeof()
+
+Questo operatore ha un parametro che può essere sia il nome di un tipo che una espressione. Esso ritorna la memoria, in byte, necessaria a memorizzare un valore di tale tipo o il valore dell'espressione:
+a = sizeof (char);
+ritorna 1 in a perché un valore di tipo char occupa un byte. 
+Il valore ritornato da è una costante. Esso è quindi determinato a tempo di compilazione (prima dell'esecuzione del programma). 
+ 
+Altri operatori
+
+Vedremo nel seguito qualche altro operatore particolare, ad esempio quelli che operano sui puntatori e quelli specifici per la programmazione ad oggetti. Essi verranno trattati nelle rispettive sezioni.
+Priorità degli operatori
+
+Quando scriviamo espressioni complesse con molti operatori e operandi possono sorgere dei dubbi sull'ordine in cui gli operatori vengono valutati. Ad esempio, con l'espressione:
+a = 5 + 7 % 2
+può sorgere il dubbio tra le seguenti due interpretazioni:
+a = 5 + (7 % 2) con risultato 6, o 
+a = (5 + 7) % 2 con risultato 0
+L'interpretazione corretta è la prima, quella con risultato 6. Vi è un ordine di priorità prestabilito tra tutti gli operatori (sia aritmetici che non aritmetici). L'ordine di priorità è il seguente:
+  
+  
+Priorità	Operatore	Descrizione	Associatività
+1	::	scopo	Sinistra
+2	() [ ] -> . sizeof	 	Sinistra
+3	++ --	incremento/decremento	Destra
+~	Complemento a uno (bit a bit)
+!	NOT
+& *	Referenziazione e Dereferenziazione (puntatori)
+(tipo)	Conversione di tipo
++ -	Operatori di segno unario
+4	* / %	Operatori aritmetici moltiplicativi	Sinistra
+5	+ -	Operatori aritmetici additivi	Sinistra
+6	<< >>	Spostamento dei bit 	Sinistra
+7	< <= > >=	Operatori relazionali	Sinistra
+8	== !=	Operatori relazionali di uguaglianza	Sinistra
+9	& ^ |	Operatori bit a bit	Sinistra
+10	&& ||	Operatori logici	Sinistra
+11	?:	Operatore condizionale	Destra
+12	= += -= *= /= %= 
+>>= <<= &= ^= |=	Assegnamento	Destra
+13	,	Operatore virgola, separatore	Sinistra
+L'associatività specifica in quale ordine vengono valutati gli operatori con la stessa priorità: partendo da quello più a destra o da quello più a sinistra.
+La precedenza degli operatori in una espressione si può modificare o rendere evidente usando le parentesi ( e ) come nell'esempio seguente:
+
+a = 5 + 7 % 2;
+si può scrivere come:
+a = 5 + (7 % 2);oppure 
+a = (5 + 7) % 2;
+a seconde di come si vuole venga eseguita l'espressione.
+Pertanto, quando si vuole scrivere una espressione complicata e non  si è certi della precedenza degli operatori è bene mettere le parentesi; questo renderà oltretutto più leggibile l'espressione. 
+ 
+
+
+ 
+
+
+
+ 
+
+Precedente: 
+1-2. Variabili, tipi di dato, costanti.	 
+indice	Successivo: 
+1-4. Comunicazione da console.

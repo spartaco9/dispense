@@ -1,0 +1,303 @@
+
+http://www.dis.uniroma1.it/~liberato/gestionale/null/null.html
+
+---------------------------------------------------------------------
+
+
+                             LA COSTANTE NULL
+
+
+Le variabili per gli oggetti contengono l'indirizzo di un oggetto.
+
+Possono anche contenere il valore null
+
+Indica che un oggetto non esiste.
+
+Esempio di uso
+
+Quando readLine viene invocato su un file che è finito, ritorna null
+
+    String s;
+
+    while(true) {
+      s=b.readLine();
+      if(s==null)
+        break;
+      System.out.println(s);
+    }
+Il null, in memoria
+
+Non è un oggetto.
+
+È un valore speciale che viene scritto nella variabile.
+
+Se s è una stringa (es. dopo s="abcd"):
+
+
+Se s vale null (es. dopo s=null;):
+
+
+Stringa vuota
+
+Attenzione: null non indica la stringa vuota.
+
+La stringa vuota è un oggetto.
+
+
+La stringa vuota è una sequenza di caratteri di lunghezza zero.
+
+Il valore null indica che non c'è un oggetto:
+
+
+Leggere la stringa vuota
+
+Il valore di ritorno di b.readLine() indica:
+
+stringa vuota
+nel file c'è una linea bianca (una linea che non contiene nessun carattere); dopo, potrebbero esserci altre linee.
+null
+il file non contiene altre linee
+Assegnare null
+
+Pensate a null come al valore "nessun indirizzo".
+
+Si tratta sempre di un valore numerico, però non indica un indirizzo.
+
+In altri linguaggi, ò il valore 0 (e nessun oggetto può essere memorizzato all'indirizzo 0)
+
+Una variabile per un oggetto contiene null oppure un indirizzo.
+
+Se contiene un indirizzo, allora è l'indirizzo dell'oggetto. Altrimenti, l'oggetto non esiste.
+
+Dove si può usare null?
+
+Si può usare per qualsiasi oggetto:
+
+  Point p;
+
+  p=null;
+Se in p ci metto null, non devo creare l'oggetto.
+
+Oggetti persi
+
+  Point p;
+  p=new Point();
+
+  p=null;
+Primo: viene creata la variabile:
+
+
+Creazione dell'oggetto
+
+Viene creato l'oggetto, e il suo indirizzo va in p.
+
+
+Il valore null
+
+Viene messo dentro p
+
+
+Si è perso l'indirizzo dell'oggetto.
+
+L'oggetto non si può usare.
+
+Verrà cancellato automaticamente.
+
+Creazione oggetti e null
+
+  Point p;
+  p=new Point();
+
+  p=null;
+Non serve creare un oggetto, se poi nella variabile ci metto null
+
+Invocare metodi
+
+La costante null la posso mettere in una qualsiasi variabile oggetto:
+
+  Studente s;
+  s=null;
+Cosa succede se uso una componente o un metodo?
+
+Metodi e componenti
+
+Le componenti e i metodi riguardano gli oggetti:
+
+la componente è una parte dell'oggetto
+il metodo è una operazione sull'oggetto
+null indica che l'oggetto non esiste
+
+Errori
+
+  Point p;
+  p=null;
+
+  p.x=12;   // errore: non esiste l'oggetto p
+
+  p.move(10,2);	// stesso errore
+Stessa regola vista finora: non posso usare le componenti o invocare i metodi se l'oggetto non esiste.
+
+Se faccio p=null l'oggetto non esiste.
+
+Variabili non inizializzate
+
+  Point p;
+
+  if(p==null)
+    ...
+Qui p vale null?
+
+No! La variabile non è inizializzata.
+
+L'errore è diverso: p non contiene un valore preciso.
+
+  p=null;
+
+  ...
+
+  if(p==null) 
+    ...
+Se faccio l'assegnamento p=null; allora p contiene il valore null
+
+L'oggetto non esiste, ma p contiene un valore specifico.
+
+Quindi, si può confrontare il valore di p con null (anche se l'oggetto non esiste).
+
+Inizializzazione automatica
+
+Le variabili non vengono inizializzate automaticamente.
+
+Le componenti degli oggetti vengono inizializate a 0 se numeriche e a null se di tipo oggetto.
+
+Il compilatore non rileva errori.
+
+Però questo può portare a errori.
+
+Controllare sempre l'inizializzazione.
+
+Passare null a un metodo
+
+Cosa succede quando si esegue questo programma?
+
+import java.awt.*;
+
+class NullMet {
+  static void azzera(Point q) {
+    q.x=0;
+    q.y=0;
+  }
+
+  public static void main(String args[]) {
+    Point p;
+    p=null;
+
+    azzera(p);
+
+    System.out.println(p);
+  }
+}
+Errore in esecuzione!
+
+Exception in thread "main" java.lang.NullPointerException
+        at NullMet.azzera(NullMet.java:5)
+        at NullMet.main(NullMet.java:13)
+L'errore indica che è stata usata una componente, oppure invocato un metodo, di un oggetto che non esiste.
+
+In memoria
+
+Inizialmente:
+
+
+Dopo l'invocazione del metodo
+
+Se faccio q=p; viene copiato l'indirizzo scritto in p dentro q.
+
+Lo stesso succede quando si invoca il metodo.
+
+Il valore null viene copiato.
+
+
+In esecuzione
+
+Si cerca di fare q.x=0; quando non esiste l'oggetto.
+
+Si genera un errore.
+
+Modifiche all'oggetto
+
+regola sbagliata:
+quando si passa una variabile oggetto a un metodo, le modifiche hanno effetto nel programma
+regola esatta:
+le variabili oggetto contengono l'indirizzo di un oggetto; gli oggetti stanno in una zona di memoria visibile da tutti i metodi.
+Domanda: cosa stampa questo programma?
+
+import java.awt.*;
+
+class Modifica {
+  static void cambia(Point q) {
+    q=new Point();
+
+    q.move(0,0);
+  }
+
+  public static void main(String args[]) {
+    Point p;
+    p=null;
+
+    cambia(p);
+
+    System.out.println(p.x);
+  }
+}
+Risposta
+
+Bisogna vedere cosa succede in memoria.
+
+Inizio:
+
+
+Invocazione del metodo
+
+Viene creata la zona di memoria associata.
+
+Vengono copiati i valori nelle variabili.
+
+
+Esecuzione del metodo
+
+Viene creato un nuovo oggetto.
+
+Il suo indirizzo viene messo in q
+
+
+Fine dell'esecuzione
+
+La zona di memoria del metodo viene cancellata.
+
+
+L'oggetto esiste ancora, ma non è più accessibile.
+
+Verrà distrutto automaticamente.
+
+Risposta
+
+p è sempre rimasto null
+
+Quando si cerca di stampare p.x, si genera un errore.
+
+Regola generale:
+
+quando si invoca un metodo, sono i valori che vengono trasmessi al metodo
+Quando si fa cambia(p), questo equivale a cambia(null)
+
+Perchè cambia(null) dovrebbe modificare p?
+
+Modifiche agli oggetti
+
+Tutti i metodi possono modificare/usare gli oggetti, basta che abbiano il loro indirizzo.
+
+Se un metodo riceve l'indirizzo di un oggetto, lo può modificare.
+
+Il metodo riceve comunque un valore
+
+Dal valore può risalire all'oggetto e cambiarlo.

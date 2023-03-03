@@ -1,0 +1,32 @@
+Switch & Case sostituiscono If & Else.
+
+
+
+esempio :
+
+
+
+
+#include <stdio.h>
+
+main()
+{
+
+    switch (5+1)
+
+	
+    case (6):
+    printf("Bravo");
+
+  	
+	  switch (5+1)
+	  printf("Asino, è sei");
+  	
+}
+
+
+
+
+IL PROGRAMMA RIPORTATO QUI SOPRA STAMPA "bravo" SE E' VERO, 
+
+SENNO "asino, è sei".

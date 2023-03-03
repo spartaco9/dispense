@@ -1,0 +1,12 @@
+- mi spiegate cosa fa il comando getchar in C..?
+
+
+- getchar, in pratica è una funzione di C che acquisisce dati da input, cioè     in questo caso da tastiera aspetta che tu inserisci l' ultimo dato e premi     invio, e termina la sua funzione quando verra restituito il dato di output     cioè la risposta finale da parte del programma all'utente.
+
+
+per ricordare :
+
+
+Getchar :
+
+Fino a quando non premi invio il risultato di cio' che stai digitando non viene mostrato in output.

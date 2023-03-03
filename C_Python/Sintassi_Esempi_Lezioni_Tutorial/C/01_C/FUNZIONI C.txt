@@ -1,0 +1,257 @@
+Le variabili
+
+
+Concettualmente, le variabili si possono definire come contenitori di dati. Esse infatti corrispondono a locazioni di memoria di determinate dimensioni, contenenti un certo dato. Il tipo di dato e la dimensione della locazione di memoria sono definiti durante la definizione della variabile.
+
+Ogni variabile ha un tipo che indica appunto il tipo di dato che la variabile può contenere. Questo può essere uno dei seguenti
+
+char
+int
+float
+double
+
+
+IDENTIFICATORI
+
+
+Codice	Serve a mostrare…
+%c	un carattere
+%d	un intero a base decimale
+%x	un intero a base esadecimale
+%f	un numero a virgola mobile
+%e	un numero a virgola mobile con notazione scientifica
+
+
+
+Il tipo di dato char contiene un valore numerico corrispondente al codice ascii di un carattere. Ha dimensione 1 byte e viene utilizzato per salvare caratteri. Il range di valori che può contenere, va da 0 a 255 se senza segno, oppure da -128 a 127 se con segno.
+
+Il tipo di dato int è utilizzato per contenere numeri interi. La dimensione di questa variabile dipende dall'implementazione: nei moderni compilatori, il dato di tipo int ha dimensione 4 byte, ovvero 32 bit. Il range di valori per questo tipo va da 0 a (2^32)-1 se senza segno, altrimenti da -2^31 a +(2^31) - 1.
+
+Il tipo di dato float è utilizzato per contenere valori in virgola mobile, a singola precisione. La dimensione di una variabile float è di 32 bit (ovvero 4 byte).
+
+Il tipo di dato double è utilizzato per contenere valori in virgola mobile a doppia precisione. La dimensione di una variabile double è di 64 bit (ovvero 8 byte).
+
+In aggiunta esistono alcuni qualificatori, che possono essere applicati a questi tipi. Per esempio, short e long sono associabili agli interi:
+
+
+
+Operatori[modifica]
+Il C fornisce vari tipi di operatori: aritmetici, logici, ecc.
+
+Operatori di assegnazione e confronto
+
+=   Assegnamento
+==  Confronto tra due valori
+>   Maggiore
+>=  Maggiore o uguale
+<   Minore
+<=  Minore o uguale
+!=  Diverso o non è
+La differenza tra l'operatore = e l' operatore == è molto importante, poiché se si vogliono confrontare due variabili e si usa l'operatore =, il risultato sarà solo l'assegnazione alla variabile a sinistra del valore della variabile a destra e verrà restituito tale valore.
+
+
+
+
+Operatori aritmetici
+
+
+
+
+*  Prodotto
+/  Rapporto
+%  Modulo. Calcola il resto di una divisione intera. Es. 9 % 5 = 4
++  Somma
+-  Differenza
+*= Moltiplica il valore della variabile a sinistra per il valore a destra e lo riassegna alla variabile
+/= Come il precedente, ma con il rapporto
+%= Come il precedente, ma con l'operatore modulo
++= Aggiunge alla variabile a sinistra il valore a destra
+-= Sottrae alla variabile a sinistra il valore a destra
+
+
+
+Come è possibile notare da quest'elenco, alcuni operatori "includono" l'operatore uguale. Tali operatori sono in realtà delle scorciatoie ad alcune operazioni come mostrato negli esempi seguenti:
+
+
+var1 += var2;      corrisponde all'istruzione var1 = var1 + (var2);
+var1 -= var2;      corrisponde all'istruzione var1 = var1 - (var2);
+var1 *= var2;      corrisponde all'istruzione var1 = var1 * (var2);
+var1 /= var2;      corrisponde all'istruzione var1 = var1 / (var2);
+var1 %= var2;      corrisponde all'istruzione var1 = var1 % (var2);
+
+
+
+L'inserimento delle parentesi negli esempi precedenti non ha molto valore in questo caso, ma hanno un significato particolare. Quando si utilizzano questi operatori infatti, è necessario porgere molta attenzione a come vengono strutturate le istruzioni, poiché acquisiscono come 'secondo parametro' tutto ciò che è a destra dell'operatore come se fosse racchiuso tra parentesi. Di seguito sono infatti riportati alcuni esempi per spiegare meglio quanto descritto:
+
+
+var1 *= var2 + var3; non corrisponde a var1 = var1 * var2 + var3 ma a var1 = var1 * (var2 + var3)
+
+
+Questo esempio dovrebbe essere più che sufficiente per comprendere il modo corretto di utilizzare questi operatori.
+
+
+&& AND logico (moltiplicazione)
+|| OR logico  (somma - addizione)
+!  NOT logico (negazione)
+
+
+
+Operatori bit a bit
+
+&  AND
+|  OR
+&= Come per gli operatori aritmetici
+|= Anche questo come per gli operatori aritmetici
+
+
+Gli operatori &= e |= funzionano nello stesso modo degli operatori +=, -=, *=, /=.
+
+
+
+
+                                 FUNZIONI C
+
+
+
+Main = essenziale, Linea Principale, Oceano (Si Usa Per Iniziare Una Procedura                                              Di Programmaz. Ed E' Sempre                                                    Quella Iniziale)
+
+Void = Annullare (Non Necessariamente Con Return)
+
+Return = Ritorno Indietro (In Genere Si Usa A Fine Procedura)
+
+double = doppia virgola mobile
+
+Int = Insieme Di Numeri Interi (Senza Virgola - Positivi O Negativi)
+
+Unsigned (Variante Senza Segno)
+
+Array = Testo (O Meglio Sequenza Di Char)
+
+String (Stringa Di Caratteri (O Di Testo)
+
+enum = enumerativo (Insieme di costanti intere)
+
+cin e cout = cin e cout sono due oggetti, che rappresentano rispettivamente                 gli stream di input e output. L'operatore di estrazione >> serve               ad estrarre valori da uno stream in input: 
+
+             cin >> variabile; 
+
+             L'operatore di inserzione << serve a introdurre valori in uno                  stream di output: 
+
+             cout << variabile. 
+ 
+             I metodi di cout e le funzioni definite in <iomanip> permettono                di controllare la formattazione dell'output, mentre i metodi di                cin permettono di verificare lo stato dello stream. 
+             In particolare, cin.good() verifica se il canale è in buono                    stato, cin.fail() verifica se l'ultima operazione è fallita,                   cin.clear() serve a resettare uno stato di errore.
+
+
+
+Primo programma
+
+
+
+I files sorgenti dei programmi scritti in C hanno estensione .c. Per creare un programma, è necessario definire una funzione particolare chiamata main. Questa funzione rappresenta l'entry point del programma, ovvero il punto di partenza. Questa funzione restituirà un valore intero che indicherà al sistema operativo o all'eventuale programma chiamante un codice di uscita, che servirà a capire se il programma è stato chiuso per un errore oppure se tutto è andato a buon fine. Le funzioni verranno comunque spiegate in dettaglio nel capitolo dedicato all'argomento.
+
+Iniziamo creando un file prova.c. A questo punto è necessario includere un file di intestazione, in cui sono dichiarate le funzioni standard di input/output del C, di cui parleremo durante il resto del documento. Per far questo, iniziamo il programma in questo modo:
+
+
+#include <stdio.h>
+
+A questo punto dobbiamo dichiariarare la funzione main, che come spiegato prima, ci permetterà di eseguire il programma. Ciò va fatto aggiungendo il seguente codice:
+
+
+int main () {
+ 
+ }
+
+
+In questo modo abbiamo dichiarato la funzione main che per la semplicità estrema di questo programma di esempio, conterrà tutto il codice necessario. Se tentassimo di compilare il file prova.c così ottenuto :
+
+
+#include <stdio.h>
+ 
+ int main () {
+ 
+ }
+
+
+otterremmo un programma perfettamente funzionante ma che non esegue nessuna operazione (provare per credere). Per creare un primo programma che stampi la classica frase "Hello world!" sul video, utilizzeremo la funzione di libreria printf, di cui parleremo in seguito, in questo modo:
+
+
+
+printf ("Hello world!\n");
+
+
+Questo codice va inserito tra le due parentesi graffe della funzione main in questo modo:
+
+
+#include <stdio.h>
+ 
+ int main () {
+   printf ("Hello world!\n");
+ }
+
+
+
+La sequenza di caratteri \n, è una sequenza di escape che consente di inserire un carattere new line in una stringa.
+
+Se siete in ambiente linux, potete compilare ed eseguire questo file prova.c in questo modo:
+
+
+$ gcc -o prova prova.c
+$ ./prova
+Hello world!
+$
+
+
+
+dove $ indica la shell. In questo caso è stato utilizzato il compilatore gcc: il parametro -o prova indica che il file eseguibile deve chiamarsi prova; mentre prova.c è il file sorgente che deve essere compilato. In questo esempio ho mostrato anche l'output del programma.
+
+Ora proviamo a modificare questo programma per eseguire qualche operazione in più: dichiariamo tre variabili, assegnamo loro alcuni valori, facciamone la somma e stampiamola:
+
+
+
+
+
+Sequenze di escape
+
+Visual Studio 2015 Altre versioni 
+Le sequenze di caratteri sono costituite da una barra rovesciata (\) seguita da una lettera o da una combinazione di cifre denominate "caratteri di escape". Per rappresentare un carattere di nuova riga, una virgoletta singola o altri caratteri specifici in una costante carattere, è necessario usare sequenze di escape. Una sequenza di escape verrà considerata come un singolo carattere ed è quindi valida come costante carattere.
+Le sequenze di escape in genere sono usate per specificare azioni come il ritorno a capo e le tabulazioni su terminali e stampanti. Tali sequenze vengono usate per fornire le rappresentazioni letterali dei caratteri non stampabili e dei caratteri che in genere hanno significati speciali, ad esempio le virgolette doppie ("). La tabella seguente elenca le sequenze di escape ANSI e gli elementi che rappresentano.
+Si noti che il punto interrogativo preceduto da una barra rovesciata (\?) specifica un punto interrogativo letterale nei casi in cui la sequenza di caratteri venga interpretata erroneamente come un trigramma. Per altre informazioni, vedere Trigrammi.
+Sequenze di escape
+
+
+
+Sequenza di escape                 Rappresenta
+\a                                 Segnale acustico (avviso)
+\b                                 BACKSPACE
+\f                                 Modulo continuo
+\n                                 Nuova riga
+\r                                 Ritorno a capo
+\t                                 Tabulazione orizzontale
+\v                                 Tabulazione verticale
+\'                                 Virgoletta singola
+\"                                 Virgolette doppie
+\\                                 Barra rovesciata
+\?                                 Punto interrogativo letterale
+\ ooo                              Carattere ASCII in notazione ottale
+\x hh                              Carattere ASCII in notazione esadecimale
+
+\x hhhh                            Carattere unicode in notazione esadecimale                                     se la sequenza di escape viene usata in una                                    costante a caratteri estesi o in una                                           stringa letterale Unicode. Ad esempio,                                         WCHAR f = L'\x4e00' o WCHAR b[] = L"The                                        Chinese character for one is \x4e00".
+
+
+
+Sezione specifica Microsoft :
+
+
+Se una barra rovesciata è preceduta da un carattere non presente nella tabella, il compilatore gestisce il carattere indefinito come carattere esteso. Ad esempio, \c viene considerato come c.
+
+
+Fine sezione specifica Microsoft :
+
+
+Le sequenze di escape consentono di inviare i caratteri di controllo non grafici su un dispositivo di visualizzazione. Ad esempio, il carattere ESC (\033) viene spesso usato come primo carattere di un comando di controllo per un terminale o una stampante. Alcune sequenze di escape sono specifiche del dispositivo. La tabulazione verticale e il carattere di avanzamento carta (\v e \f) non influiscono ad esempio sull'output dello schermo, ma consentono di eseguire operazioni di stampa appropriate.
+
+È inoltre possibile usare la barra rovesciata (\) come carattere di continuazione. Quando un carattere di nuova riga (equivalente alla pressione del tasto INVIO) è immediatamente successivo alla barra rovesciata, il compilatore ignora la barra rovesciata e il carattere di nuova riga e tratta la riga successiva come parte della riga precedente. Questo diviene particolarmente utile per le definizioni di preprocessore con più di una singola riga. Ad esempio:
+
+#define assert(exp) \
+( (exp) ? (void) 0:_assert( #exp, __FILE__, __LINE__ ) )

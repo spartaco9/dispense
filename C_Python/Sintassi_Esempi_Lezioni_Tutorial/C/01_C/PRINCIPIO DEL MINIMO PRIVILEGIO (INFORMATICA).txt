@@ -1,0 +1,63 @@
+
+
+                   PRINCIPIO DEL MINIMO PRIVILEGIO (INFORMATICA)
+
+
+
+In informatica, il principio del privilegio minimo richiede che in un particolare livello di astrazione di un ambiente di calcolo ogni modulo computazionale (che può essere ad esempio un processo, un programma o un utente a seconda del livello di astrazione considerato) abbia visibilità delle sole risorse/informazioni immediatamente necessarie al suo funzionamento.
+
+Lo scopo della applicazione del principio è quello di concedere solo il minimo insieme di privilegi possibile in ogni istante, in modo da migliorare la protezione del sistema, sia per quanto riguarda la tolleranza ai guasti (dovuti a difetti del sistema) che per la salvaguardia da condotte maliziose (sicurezza informatica).
+
+Uno dei meccanismi di protezione che consentono di soddisfare il principio del privilegio minimo, è quello a capability. Per ragioni storiche però questo meccanismo è presente solo in pochissimi sistemi, mentre la maggior parte dei sistemi operativi moderni fanno ancora uso del meccanismo a liste di controllo di accesso.
+
+Origine[modifica | modifica wikitesto]
+Il principio emerse intorno alla metà degli anni settanta, e generalmente si indica il testo Fault Tolerant Operating Systems di Peter Denning come fonte originaria, sebbene esso venne formulato con nomi diversi in molti testi contemporanei, tra cui The protection of information in computer systems, di Saltzer e Schroeder.
+
+Bibliografia[modifica | modifica wikitesto]
+Ben Mankin, The Formalisation of Protection Systems, Ph.D thesis, University of Bath, 2004
+P. J. Denning, Fault tolerant operating systems, Computing Surveys (USA), 8(4):359{389, December 1976.
+J. H. Saltzer and M. D. Schroeder, The protection of information in computer systems, Proceedings of the IEEE, 63(9):1278{1308, 1975.
+Informatica Portale Informatica: accedi alle voci di Wikipedia che trattano di informatica
+Categoria: Teorie dell'informatica| [altre]
+Menu di navigazione
+Accesso non effettuatodiscussionicontributiRegistratiEntraVoceDiscussioneLeggiModificaModifica wikitestoCronologiaRicerca
+
+Ricerca
+Vai
+Pagina principale
+Ultime modifiche
+Una voce a caso
+Vetrina
+Aiuto
+Comunità
+Portale Comunità
+Bar
+Il Wikipediano
+Fai una donazione
+Contatti
+Strumenti
+Puntano qui
+Modifiche correlate
+Carica su Commons
+Pagine speciali
+Link permanente
+Informazioni sulla pagina
+Elemento Wikidata
+Cita questa voce
+Stampa/esporta
+Crea un libro
+Scarica come PDF
+Versione stampabile
+In altre lingue
+English
+Español
+فارسی
+Français
+日本語
+Русский
+中文
+Altre 5
+Modifica collegamenti
+Questa pagina è stata modificata per l'ultima volta il 19 ago 2015 alle 22:58.
+Il testo è disponibile secondo la licenza Creative Commons Attribuzione-Condividi allo stesso modo; possono applicarsi condizioni ulteriori. Vedi le Condizioni d'uso per i dettagli. Wikipedia® è un marchio registrato della Wikimedia Foundation, Inc. 
+Politica sulla privacyInformazioni su WikipediaAvvertenzeSviluppatoriDichiarazione sui cookieVersione mobileWikimedia Foundation Powered by MediaWiki

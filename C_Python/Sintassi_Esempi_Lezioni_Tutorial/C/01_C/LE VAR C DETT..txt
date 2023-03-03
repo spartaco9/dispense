@@ -1,0 +1,97 @@
+
+
+                               Le variabili in C
+
+ 
+
+In C esistono diversi tipi di variabili, che servono per rappresentare tipi di dato diversi, dai grossi numeri ai testi. Alcuni linguaggi permettono la dichiarazione di variabili generiche, ma poter assegnare a ciascun dato il tipo di variabile adeguato, consente anche una migliore gestione della memoria (alla fonte).
+
+Nella tabella seguente sono mostrati i vari tipi, la parola chiave C che li identifica (char per carattere, int per intero, etc.), la tipologia di informazioni che rappresentano ed il numero di byte necessari per la loro rappresentazione in C:
+
+
+LISTA VARIABILI :
+
+
+
+Tipi di dichiarazione	Rappresentazione	   N. di byte
+
+      char	          Carattere	            1 (8 bit)
+      int	          Numero intero	            2 (16 bit)
+      short	          Numero intero “corto”	    2 (16 bit)
+      long	          Numero intero “lungo”	    4 (32 bit)
+      float	          Numero reale	            4 (32 bit)
+      double	          Numero reale “lungo”	    8 (64 bit)
+      void                Nullo (0)                  Nullo (0)
+
+
+
+char
+
+
+Il tipo char può contenere qualsiasi carattere definito secondo lo standard ASCII, quindi qualsiasi lettera (maiuscola o minuscola), cifra (da 0 a 9) e simbolo previsto dalla codifica.
+
+È molto importante ricordare che un char può contenere uno ed un solo carattere. Per memorizzare una successione di caratteri, alcuni linguaggi adottano un tipo stringa (string ad esempio), in C, invece, utilizziamo un array di char. L’array è un contenitore di variabili dello stesso tipo e ne approfondiremo la conoscenza più avanti.
+
+Per dichiarare una variabile char, ad esempio inizializzandola con la lettera ‘r‘, basta scrivere:
+
+char a = 'r';
+int
+Il tipo int permette di rappresentare numeri interi. Possiamo dichiarare un int con due varianti: short e long, anche se in realtà un tipo int è già di per se’ un tipo short, mentre il la keyword long permette di estendere (utilizzando due byte in più) il range dei valori che il tipo int può assumere, consentedoci di lavorare con grandi numeri.
+
+I numeri interi, rappresentati da int, sono quelli “senza la virgola” o parti frazionate. Esaminiamo un pezzo di codice in cui dichiariamo ed inizializziamo variabili intere ed eseguiamo una divisione (/), questa operazione sui numeri interi ci ricorda che bisogna fare attenzione poiché non possiamo rappresentare valori decimali.
+
+nt x = 7;
+int y = 3;
+int z;
+ 
+z = x / y;  // z vale 2, cioè la parte intera della divisione tra 7 e 3
+float e double
+I tipi float e double sono i cosiddetti numeri in virgola mobile, che rappresentano l’insieme dei numeri reali: con essi possiamo rappresentare numeri molto piccoli o numeri molto grandi, positivi e negativi e naturalmente con e senza decimali.
+
+La differenza tra i due sta nel numero di bit riservati alla rappresentazione dei numeri, che si va a riflettere sul range di numeri e sul numero di cifre dopo la virgola che possiamo memorizzare. Quindi se abbiamo bisogno di particolare accuratezza, utilizziamo il tipo double.
+
+Vediamo un semplice pezzo di codice in cui riproponiamo la divisione utilizzando double, per mostrare la differenza con il tipo int:
+
+double x = 7.0;
+double y = 2.0;
+double z;
+ 
+z = x / y;  // z vale 3.5 
+La notazione usata per rappresentare la virgola è quella inglese, in cui si usa il punto (e non una virgola) per dividere la parte intera da quelle frazionaria.
+
+Esempio pratico
+(Visualizza il sorgente completo)
+
+All’interno del programma di esempio vengono utilizzate molte variabili; ecco alcune dichiarazioni per far capire l’importanza che le variabili ricoprono all’interno del programma.
+
+62   int scelta;
+// [...]
+296  int subscelta;
+297  int i=1;
+298  int n=1;
+// [...]
+367  int subscelta;
+368  int i=1;
+369  int n=1;
+// [...]
+469  int index=0; // inizializza l'indice
+// [...]
+554  int i = 0;
+// [...]
+576  char invio;
+Numeri con segno e senza segno
+In termini di rappresentabilità c’è da far notare che l’uso dei bit per rappresentare un determinato tipo varia a seconda che quel tipo sia signed (con segno) o unsigned (senza segno).
+
+Per rappresentare un numero come 114, ad esempio, sono sufficienti 7 bit, se pensiamo al tipo signed char, che ha 8 bit, possiamo immaginare come l’ottavo bit (il più significativo, quello più a sinistra) rappresenti il segno del numero (‘+‘ se il bit vale 0, ‘-‘ se il bit vale 1).
+
+(0)1110010 // rappresenta, in binario, l'intero 114
+(1)0001110 // ecco l'intero -114
+Come si vede, oltre a trovare “acceso” il bit più significativo, vediamo che la codifica dei numeri negativi è invertita, parte dal numero -1 (rapprensetnato con 11111111) e arriva a -128 (10000000). Questa codifica si chiama complemento a due.
+
+La stessa codifca con unsigned char, rappresenta valori positivi ma diversi tra loro:
+
+(0)1110010 // rappresenta, in bit, l'intero 114
+(1)0001110 // rappresenta, in bit, l'intero 142
+In definitiva, ammesso di avere n bit per rappresentare un numero, se è signed, allora i valori possibili saranno compresi tra -2(n-1) e 2(n-1)-1, quindi, nel caso di una rappresentazione ad 8 bit si avrebbero valori compresi tra -128 e 127.
+
+Nel caso di un unsigned, invece i valori, come già detto, sono tutti positivi e possono assumere valori compresi tra 0 e 2n – 1, nel caso degli 8 bit si avrebbero valori compresi tra 0 e 255.
